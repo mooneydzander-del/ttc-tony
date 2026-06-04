@@ -1,9 +1,9 @@
 /**
  * ==========================================================================
- * TC Tacos Catering - Application Script & Data Object
+ * TC Tacos Catering - Premium Cinematic Script
  * ==========================================================================
  * 
- * DESIGN VIBE: Warm fire glow, smoky night market, mobile-first, cinematic.
+ * DESIGN VIBE: Warm wood smoke, night grill fire glow, premium street taco energy
  * 
  * TODO COMMENTS FOR TONY:
  * - [TODO] Final Menu: Update CATERING_DATA.menu with final tacos, quesadillas, drinks, and sides.
@@ -37,11 +37,12 @@ const CATERING_DATA = {
     maxEventsPerDay: 3
   },
   
-  // [TODO] Update menu list with final items and badges
+  // [TODO] Update menu list with final items, banners, and badges
   menu: [
     {
       category: "Street Tacos",
       badge: "Sample Menu",
+      banner: "./assets/gallery-1.jpg",
       items: [
         { name: "Asada", desc: "Finely grilled steak marinated in house citrus and spices." },
         { name: "Al Pastor", desc: "Traditional pork marinated in chili, spices, and pineapple." },
@@ -51,6 +52,7 @@ const CATERING_DATA = {
     {
       category: "Quesadillas",
       badge: "Sample Menu",
+      banner: "./assets/gallery-2.jpg",
       items: [
         { name: "Asada", desc: "Melted cheese with carne asada in a folded flour tortilla." },
         { name: "Al Pastor", desc: "Melted cheese with seasoned al pastor pork." },
@@ -60,6 +62,7 @@ const CATERING_DATA = {
     {
       category: "Drinks",
       badge: "Ask About Availability",
+      banner: "./assets/gallery-3.jpg",
       items: [
         { name: "Sodas", desc: "Selection of refreshing canned sodas and traditional waters." }
       ]
@@ -67,6 +70,7 @@ const CATERING_DATA = {
     {
       category: "Seasonal Specials",
       badge: "Final Menu Coming Soon",
+      banner: "./assets/gallery-5.jpg",
       items: [
         { name: "Taco Boxes", desc: "Perfectly packed taco boxes ready for events." },
         { name: "Quesabirrias with Consomé", desc: "Sizzling cheese and tender beef birria tacos served with rich dipping broth." }
@@ -171,18 +175,21 @@ document.addEventListener("DOMContentLoaded", () => {
   initCalendlyLoader();
 });
 
-// Render Menu Preview Section
+// Render Menu Preview Section with visual banners
 function renderMenu() {
   const menuContainer = document.getElementById("menu-grid-target");
   if (!menuContainer) return;
 
   menuContainer.innerHTML = CATERING_DATA.menu.map(cat => `
     <div class="glass-card menu-card">
-      <div>
-        <div class="menu-card-header">
-          <h3 class="menu-card-title">${cat.category}</h3>
+      <div class="menu-visual-header">
+        <img src="${cat.banner}" alt="${cat.category}" loading="lazy">
+        <div class="menu-visual-overlay">
+          <h3>${cat.category}</h3>
           <span class="badge badge-sample">${cat.badge}</span>
         </div>
+      </div>
+      <div class="menu-body">
         <ul class="menu-items-list">
           ${cat.items.map(item => `
             <li class="menu-item">
@@ -324,7 +331,7 @@ function initNavigation() {
       
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        const offset = 80; // height of header
+        const offset = 70; // height of sticky header
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -360,7 +367,7 @@ function initVideoFallback() {
 }
 
 function triggerVideoFallback(videoElement) {
-  console.log("Background video placeholder not found or failed to load. Applying high-fidelity smoky CSS fallback.");
+  console.log("Background video placeholder not found or failed to load. Applying high-fidelity smoky image fallback.");
   videoElement.style.display = "none";
   const heroWrapper = document.querySelector(".hero-wrapper");
   if (heroWrapper) {
