@@ -13,7 +13,7 @@
  * - [TODO] Final Calendly Link: Replace CATERING_DATA.businessInfo.calendlyUrl.
  * - [TODO] Final Logo: Place the final logo in /assets/logo.png (currently uses demo placeholder).
  * - [TODO] Final Photos: Replace gallery-*.jpg with actual photos.
- * - [TODO] Final Videos: Replace tc-tacos-bg.mp4 with the actual video file.
+ * - [DONE] Hero Video: Higgsfield video placed at assets/tc-tacos-bg.mp4.
  */
 
 // Centralized Data Object for easy management
@@ -348,6 +348,14 @@ function initNavigation() {
 function initVideoFallback() {
   const video = document.getElementById("hero-video");
   if (!video) return;
+
+  // Respect user's reduced-motion preference — show poster instead
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.pause();
+    video.removeAttribute("autoplay");
+    triggerVideoFallback(video);
+    return;
+  }
 
   // Trigger fallback if video fails to load or error occurs
   video.addEventListener("error", () => {
