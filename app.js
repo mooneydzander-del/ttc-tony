@@ -4,9 +4,9 @@
 
 // ── Active nav link ──────────────────────────────────────────────
 (function setActiveNav() {
-  const path = window.location.pathname.split('/').pop() || 'index.html';
+  var path = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a').forEach(function(a) {
-    const href = a.getAttribute('href') || '';
+    var href = a.getAttribute('href') || '';
     if (href === path || (path === '' && href === 'index.html')) {
       a.classList.add('active');
     }
@@ -47,8 +47,8 @@
 
 // ── Hero video: fade in and hide placeholder badge ───────────────
 (function initHeroVideo() {
-  var video  = document.querySelector('.hero-video');
-  var badge  = document.getElementById('videoStatusBadge');
+  var video = document.querySelector('.hero-video');
+  var badge = document.getElementById('videoStatusBadge');
   if (!video) return;
 
   video.addEventListener('playing', function onPlay() {
@@ -61,6 +61,31 @@
   });
 })();
 
+// ── Dish images: show real photo when loaded, keep emoji fallback ─
+(function initDishImages() {
+  document.querySelectorAll('.dish-img').forEach(function(img) {
+    function reveal() {
+      if (img.naturalWidth > 0) img.classList.add('loaded');
+    }
+    if (img.complete) { reveal(); } else { img.addEventListener('load', reveal); }
+  });
+})();
+
+// ── Belt slider: pause on hover + touch ──────────────────────────
+(function initBelt() {
+  var track = document.getElementById('beltTrack');
+  if (!track) return;
+
+  /* Touch: pause while finger is on the slider, resume on lift */
+  track.addEventListener('touchstart', function() {
+    track.classList.add('paused');
+  }, { passive: true });
+
+  track.addEventListener('touchend', function() {
+    track.classList.remove('paused');
+  }, { passive: true });
+})();
+
 // ── Smooth scroll for in-page anchor links ───────────────────────
 (function initAnchorScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(function(a) {
@@ -69,7 +94,9 @@
       var target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
-      var offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+      var offset = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
+      ) || 72;
       var top = target.getBoundingClientRect().top + window.scrollY - offset - 16;
       window.scrollTo({ top: top, behavior: 'smooth' });
     });

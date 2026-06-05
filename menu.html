@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu | TC Tacos Catering</title>
-  <meta name="description" content="Fresh taco catering menu — asada, al pastor, pollo tacos, quesadillas, quesabirria, taco boxes, and more for your event.">
+  <meta name="description" content="Fresh taco catering menu — asada, al pastor, pollo tacos, quesadillas, quesabirria, and more for your event in the Tri-Cities.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -37,93 +37,195 @@
       <div class="section-divider"></div>
     </header>
 
-    <!-- ── Sliding Food Carousel ───────────────────────────────── -->
+    <!-- ── Belt Slider ─────────────────────────────────────────── -->
     <!--
-      Cards are duplicated below for the seamless infinite loop.
-      Each set = 9 items. The CSS animation moves -50% (one full set).
-      To add/remove items: update BOTH the original and duplicate sets.
+      IMAGES: Place photos in assets/menu/ matching these filenames:
+        asada-tacos.png | al-pastor-tacos.png | pollo-tacos.png
+        asada-quesadilla.png | al-pastor-quesadilla.png | pollo-quesadilla.png
+        quesabirria.png | taco-boxes.png | sodas.png
+      Transparent-background PNGs work best. Emojis show as fallback when images are missing.
+      Duplicate set below is required for the seamless infinite loop — update both sets equally.
     -->
-    <div class="carousel-outer">
-      <div class="carousel-track">
+    <div class="belt-section" id="beltSection">
+      <div class="belt-track" id="beltTrack">
 
-        <!-- Original set -->
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/asada-tacos.png" alt="Asada Tacos" loading="lazy">
-          <p class="food-card-name">Asada Tacos</p>
+        <!-- Set 1 -->
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/asada-tacos.png" alt="Asada Tacos" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🥩</span>
+          </div>
+          <p class="dish-name">Asada Tacos</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/al-pastor-tacos.png" alt="Al Pastor Tacos" loading="lazy">
-          <p class="food-card-name">Al Pastor Tacos</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/al-pastor-tacos.png" alt="Al Pastor Tacos" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🌮</span>
+          </div>
+          <p class="dish-name">Al Pastor Tacos</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/pollo-tacos.png" alt="Pollo Tacos" loading="lazy">
-          <p class="food-card-name">Pollo Tacos</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/pollo-tacos.png" alt="Pollo Tacos" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🍗</span>
+          </div>
+          <p class="dish-name">Pollo Tacos</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/asada-quesadilla.png" alt="Asada Quesadilla" loading="lazy">
-          <p class="food-card-name">Asada Quesadilla</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/asada-quesadilla.png" alt="Asada Quesadilla" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Asada Quesadilla</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/al-pastor-quesadilla.png" alt="Al Pastor Quesadilla" loading="lazy">
-          <p class="food-card-name">Al Pastor Quesadilla</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/al-pastor-quesadilla.png" alt="Al Pastor Quesadilla" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Al Pastor Quesadilla</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/pollo-quesadilla.png" alt="Pollo Quesadilla" loading="lazy">
-          <p class="food-card-name">Pollo Quesadilla</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/pollo-quesadilla.png" alt="Pollo Quesadilla" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Pollo Quesadilla</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/quesabirria.png" alt="Quesabirria" loading="lazy">
-          <p class="food-card-name">Quesabirria</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/quesabirria.png" alt="Quesabirria" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🌶️</span>
+          </div>
+          <p class="dish-name">Quesabirria</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/taco-boxes.png" alt="Taco Boxes" loading="lazy">
-          <p class="food-card-name">Taco Boxes</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/taco-boxes.png" alt="Taco Boxes" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">📦</span>
+          </div>
+          <p class="dish-name">Taco Boxes</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/sodas.png" alt="Sodas" loading="lazy">
-          <p class="food-card-name">Sodas</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/sodas.png" alt="Sodas" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🥤</span>
+          </div>
+          <p class="dish-name">Sodas</p>
         </div>
 
-        <!-- Duplicate set — required for seamless loop -->
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/asada-tacos.png" alt="Asada Tacos" loading="lazy">
-          <p class="food-card-name">Asada Tacos</p>
+        <!-- Set 2 — duplicate for seamless loop -->
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/asada-tacos.png" alt="Asada Tacos" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🥩</span>
+          </div>
+          <p class="dish-name">Asada Tacos</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/al-pastor-tacos.png" alt="Al Pastor Tacos" loading="lazy">
-          <p class="food-card-name">Al Pastor Tacos</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/al-pastor-tacos.png" alt="Al Pastor Tacos" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🌮</span>
+          </div>
+          <p class="dish-name">Al Pastor Tacos</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/pollo-tacos.png" alt="Pollo Tacos" loading="lazy">
-          <p class="food-card-name">Pollo Tacos</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/pollo-tacos.png" alt="Pollo Tacos" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🍗</span>
+          </div>
+          <p class="dish-name">Pollo Tacos</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/asada-quesadilla.png" alt="Asada Quesadilla" loading="lazy">
-          <p class="food-card-name">Asada Quesadilla</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/asada-quesadilla.png" alt="Asada Quesadilla" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Asada Quesadilla</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/al-pastor-quesadilla.png" alt="Al Pastor Quesadilla" loading="lazy">
-          <p class="food-card-name">Al Pastor Quesadilla</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/al-pastor-quesadilla.png" alt="Al Pastor Quesadilla" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Al Pastor Quesadilla</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/pollo-quesadilla.png" alt="Pollo Quesadilla" loading="lazy">
-          <p class="food-card-name">Pollo Quesadilla</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/pollo-quesadilla.png" alt="Pollo Quesadilla" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Pollo Quesadilla</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/quesabirria.png" alt="Quesabirria" loading="lazy">
-          <p class="food-card-name">Quesabirria</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/quesabirria.png" alt="Quesabirria" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🌶️</span>
+          </div>
+          <p class="dish-name">Quesabirria</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/taco-boxes.png" alt="Taco Boxes" loading="lazy">
-          <p class="food-card-name">Taco Boxes</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/taco-boxes.png" alt="Taco Boxes" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">📦</span>
+          </div>
+          <p class="dish-name">Taco Boxes</p>
         </div>
-        <div class="food-card">
-          <img class="food-card-image" src="assets/menu/sodas.png" alt="Sodas" loading="lazy">
-          <p class="food-card-name">Sodas</p>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/sodas.png" alt="Sodas" loading="lazy">
+            <span class="dish-emoji" aria-hidden="true">🥤</span>
+          </div>
+          <p class="dish-name">Sodas</p>
         </div>
 
       </div>
     </div>
+
+    <!-- ── Full Static Menu ─────────────────────────────────────── -->
+    <section class="full-menu">
+      <div class="full-menu-header">
+        <h2>Full Menu</h2>
+        <p>Final menu options may vary by event.</p>
+      </div>
+
+      <div class="menu-grid">
+
+        <div class="menu-cat">
+          <p class="menu-cat-name">Tacos</p>
+          <ul>
+            <li>Asada Tacos</li>
+            <li>Al Pastor Tacos</li>
+            <li>Pollo Tacos</li>
+          </ul>
+        </div>
+
+        <div class="menu-cat">
+          <p class="menu-cat-name">Quesadillas</p>
+          <ul>
+            <li>Asada Quesadilla</li>
+            <li>Al Pastor Quesadilla</li>
+            <li>Pollo Quesadilla</li>
+          </ul>
+        </div>
+
+        <div class="menu-cat">
+          <p class="menu-cat-name">Specialties</p>
+          <ul>
+            <li>Quesabirria</li>
+            <li>Taco Boxes</li>
+          </ul>
+        </div>
+
+        <div class="menu-cat">
+          <p class="menu-cat-name">Drinks</p>
+          <ul>
+            <li>Sodas</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
 
     <p class="menu-note">Final menu options may vary by event.</p>
 
