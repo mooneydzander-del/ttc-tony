@@ -1,19 +1,8 @@
 /* ============================================================
-   TC TACOS CATERING — APP.JS
+   TC TACOS CATERING — APP.JS  (single-page)
    ============================================================ */
 
-// ── Active nav link ──────────────────────────────────────────────
-(function setActiveNav() {
-  var path = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(function(a) {
-    var href = a.getAttribute('href') || '';
-    if (href === path || (path === '' && href === 'index.html')) {
-      a.classList.add('active');
-    }
-  });
-})();
-
-// ── Nav scroll state ─────────────────────────────────────────────
+// ── Nav scroll state (transparent → frosted) ─────────────────────
 (function initNavScroll() {
   var nav = document.querySelector('.nav');
   if (!nav) return;
@@ -22,30 +11,78 @@
   update();
 })();
 
+// ── Active nav link — tracks which section is in view ────────────
+(function initActiveSection() {
+  var sections = ['home', 'menu', 'book'];
+  var navH = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
+  ) || 72;
+
+  function update() {
+    var scrollY = window.scrollY + navH + 80;
+    var current = sections[0];
+    sections.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollY) current = id;
+    });
+    document.querySelectorAll('.nav-links a[data-section]').forEach(function(a) {
+      a.classList.toggle('active', a.getAttribute('data-section') === current);
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
 // ── Mobile nav toggle ────────────────────────────────────────────
 (function initMobileNav() {
-  var toggle = document.querySelector('.nav-toggle');
-  var links  = document.querySelector('.nav-links');
+  var toggle  = document.querySelector('.nav-toggle');
+  var links   = document.querySelector('.nav-links');
+  var mobileBar = document.getElementById('mobileBar');
   if (!toggle || !links) return;
+
+  function close() {
+    links.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (mobileBar) mobileBar.style.display = '';
+  }
 
   toggle.addEventListener('click', function() {
     var open = links.classList.toggle('open');
     toggle.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
     document.body.style.overflow = open ? 'hidden' : '';
+    /* Hide mobile bar when the full-screen nav is open */
+    if (mobileBar) mobileBar.style.display = open ? 'none' : '';
   });
 
   links.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      links.classList.remove('open');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+    a.addEventListener('click', close);
+  });
+})();
+
+// ── Smooth scroll — in-page anchors (handles nav-height offset) ──
+(function initSmoothScroll() {
+  var navH = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
+  ) || 72;
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.scrollY - navH - 8;
+      window.scrollTo({ top: top, behavior: 'smooth' });
     });
   });
 })();
 
-// ── Hero video: fade in and hide placeholder badge ───────────────
+// ── Hero video: fade in and hide "coming soon" badge ─────────────
 (function initHeroVideo() {
   var video = document.querySelector('.hero-video');
   var badge = document.getElementById('videoStatusBadge');
@@ -61,7 +98,7 @@
   });
 })();
 
-// ── Dish images: show real photo when loaded, keep emoji fallback ─
+// ── Dish images: show photo when loaded, keep emoji as fallback ───
 (function initDishImages() {
   document.querySelectorAll('.dish-img').forEach(function(img) {
     function reveal() {
@@ -76,7 +113,6 @@
   var track = document.getElementById('beltTrack');
   if (!track) return;
 
-  /* Touch: pause while finger is on the slider, resume on lift */
   track.addEventListener('touchstart', function() {
     track.classList.add('paused');
   }, { passive: true });
@@ -84,21 +120,4 @@
   track.addEventListener('touchend', function() {
     track.classList.remove('paused');
   }, { passive: true });
-})();
-
-// ── Smooth scroll for in-page anchor links ───────────────────────
-(function initAnchorScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-    a.addEventListener('click', function(e) {
-      var id = a.getAttribute('href').slice(1);
-      var target = document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      var offset = parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
-      ) || 72;
-      var top = target.getBoundingClientRect().top + window.scrollY - offset - 16;
-      window.scrollTo({ top: top, behavior: 'smooth' });
-    });
-  });
 })();

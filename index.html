@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TC Tacos Catering | Tri-Cities Taco Catering</title>
-  <meta name="description" content="Fresh taco catering for backyard parties, weddings, and events across the Tri-Cities. 3 food trucks, simple online reservations, $200 deposit to hold your date.">
+  <meta name="description" content="Fresh taco catering for backyard parties, weddings, and events across the Tri-Cities. 3 food trucks, $200 deposit to reserve.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -12,86 +12,385 @@
 </head>
 <body>
 
-  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════════ -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">TC <span>Tacos</span> Catering</a>
+      <a href="#home" class="nav-logo">TC <span>Tacos</span> Catering</a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="book.html" class="nav-cta">Book Now</a></li>
+        <li><a href="#home" data-section="home">Home</a></li>
+        <li><a href="#menu" data-section="menu">Menu</a></li>
+        <li><a href="#book" class="nav-cta" data-section="book">Book Now</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- ── Hero ─────────────────────────────────────────────────── -->
-  <!--
-    VIDEO SETUP:
-    When ready, place these files in the /assets folder:
-      assets/event-setup-bg.mp4     ← hero background video
-      assets/event-setup-poster.jpg ← first-frame poster image
-    The video will play automatically. No code changes needed.
-  -->
-  <section class="hero">
-    <div class="hero-bg">
-      <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        poster="assets/event-setup-poster.jpg"
-        aria-hidden="true"
-      >
-        <source src="assets/event-setup-bg.mp4" type="video/mp4">
-      </video>
-      <div class="hero-overlay"></div>
-    </div>
+  <!-- ═══════════════════════════════════════════════════════════
+       #home — HERO + TRUST STRIP
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="home">
 
-    <div class="hero-content">
-      <p class="hero-eyebrow">Tri-Cities, WA</p>
-      <h1 class="hero-headline">TC Tacos<br>Catering</h1>
-      <p class="hero-subheadline">Backyard parties, weddings, work events,<br>and celebrations across the Tri-Cities.</p>
-      <p class="hero-support">Fresh taco catering, simple online reservations,<br>and a $200 deposit to hold your date.</p>
-      <div class="hero-actions">
-        <a href="menu.html" class="btn btn-outline btn-lg">View Menu</a>
-        <a href="book.html" class="btn btn-primary btn-lg">Book Now</a>
+    <!-- Hero
+         VIDEO SETUP: drop these files into /assets and the hero
+         automatically shows the video — no code changes needed.
+           assets/event-setup-bg.mp4
+           assets/event-setup-poster.jpg                          -->
+    <div class="hero">
+      <div class="hero-bg">
+        <video
+          class="hero-video"
+          autoplay muted loop playsinline
+          poster="assets/event-setup-poster.jpg"
+          aria-hidden="true"
+        >
+          <source src="assets/event-setup-bg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">Tri-Cities, WA</p>
+        <h1 class="hero-headline">TC Tacos<br>Catering</h1>
+        <p class="hero-subheadline">Backyard parties, weddings, work events,<br>and celebrations across the Tri-Cities.</p>
+        <p class="hero-support">Fresh taco catering, simple reservations,<br>and a $200 deposit to hold your date.</p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-outline btn-lg">View Menu</a>
+          <a href="#book" class="btn btn-primary btn-lg">Book Now</a>
+        </div>
+      </div>
+
+      <div class="video-status-badge" id="videoStatusBadge">
+        <span class="video-status-dot"></span>
+        Event setup video coming soon
       </div>
     </div>
 
-    <!-- Shown until video plays -->
-    <div class="video-status-badge" id="videoStatusBadge">
-      <span class="video-status-dot"></span>
-      Event setup video coming soon
+    <!-- Trust strip -->
+    <div class="trust-strip">
+      <div class="trust-strip-inner">
+        <div class="trust-item">
+          <span class="trust-item-value">3</span>
+          <span class="trust-item-label">Food Trucks</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item-value">3</span>
+          <span class="trust-item-label">Events Per Day</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item-value">$200</span>
+          <span class="trust-item-label">Deposit to Reserve</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item-value">Tri-Cities</span>
+          <span class="trust-item-label">Catering</span>
+        </div>
+      </div>
     </div>
+
   </section>
 
-  <!-- ── Trust Strip ───────────────────────────────────────────── -->
-  <div class="trust-strip">
-    <div class="trust-strip-inner">
-      <div class="trust-item">
-        <span class="trust-item-value">3</span>
-        <span class="trust-item-label">Food Trucks</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-item-value">3</span>
-        <span class="trust-item-label">Events Per Day</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-item-value">$200</span>
-        <span class="trust-item-label">Deposit to Reserve</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-item-value">Tri-Cities</span>
-        <span class="trust-item-label">Catering</span>
+  <!-- ═══════════════════════════════════════════════════════════
+       #menu — MENU SECTION
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="menu">
+
+    <header class="section-header">
+      <p class="page-eyebrow">What We Serve</p>
+      <h2 class="section-title">Menu</h2>
+      <p class="page-subtitle">Fresh taco catering favorites for parties and events.</p>
+      <div class="section-divider"></div>
+    </header>
+
+    <!-- Belt slider
+         IMAGES: place PNGs in assets/menu/ — filenames listed in comments below.
+         Transparent-background top-down dish PNGs look best.
+         Each dish shows an emoji fallback when the image file is missing.      -->
+    <div class="belt-section" id="beltSection">
+      <div class="belt-track" id="beltTrack">
+
+        <!-- Set 1 of 2 (set 2 is an exact duplicate — required for seamless loop) -->
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/asada-tacos.png" alt="Asada Tacos" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🥩</span>
+          </div>
+          <p class="dish-name">Asada Tacos</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/al-pastor-tacos.png" alt="Al Pastor Tacos" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🌮</span>
+          </div>
+          <p class="dish-name">Al Pastor Tacos</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/pollo-tacos.png" alt="Pollo Tacos" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🍗</span>
+          </div>
+          <p class="dish-name">Pollo Tacos</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/asada-quesadilla.png" alt="Asada Quesadilla" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Asada Quesadilla</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/al-pastor-quesadilla.png" alt="Al Pastor Quesadilla" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Al Pastor Quesadilla</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/pollo-quesadilla.png" alt="Pollo Quesadilla" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Pollo Quesadilla</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/quesabirria.png" alt="Quesabirria" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🌶️</span>
+          </div>
+          <p class="dish-name">Quesabirria</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/taco-boxes.png" alt="Taco Boxes" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">📦</span>
+          </div>
+          <p class="dish-name">Taco Boxes</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/sodas.png" alt="Sodas" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🥤</span>
+          </div>
+          <p class="dish-name">Sodas</p>
+        </div>
+
+        <!-- Set 2 of 2 — exact duplicate for seamless infinite loop -->
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/asada-tacos.png" alt="Asada Tacos" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🥩</span>
+          </div>
+          <p class="dish-name">Asada Tacos</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/al-pastor-tacos.png" alt="Al Pastor Tacos" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🌮</span>
+          </div>
+          <p class="dish-name">Al Pastor Tacos</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/pollo-tacos.png" alt="Pollo Tacos" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🍗</span>
+          </div>
+          <p class="dish-name">Pollo Tacos</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/asada-quesadilla.png" alt="Asada Quesadilla" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Asada Quesadilla</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/al-pastor-quesadilla.png" alt="Al Pastor Quesadilla" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Al Pastor Quesadilla</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/pollo-quesadilla.png" alt="Pollo Quesadilla" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🧀</span>
+          </div>
+          <p class="dish-name">Pollo Quesadilla</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/quesabirria.png" alt="Quesabirria" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🌶️</span>
+          </div>
+          <p class="dish-name">Quesabirria</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/taco-boxes.png" alt="Taco Boxes" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">📦</span>
+          </div>
+          <p class="dish-name">Taco Boxes</p>
+        </div>
+        <div class="dish-card">
+          <div class="dish-plate">
+            <img class="dish-img" src="assets/menu/sodas.png" alt="Sodas" loading="eager">
+            <span class="dish-emoji" aria-hidden="true">🥤</span>
+          </div>
+          <p class="dish-name">Sodas</p>
+        </div>
+
       </div>
     </div>
-  </div>
 
-  <!-- ── Footer ────────────────────────────────────────────────── -->
+    <!-- Full static menu -->
+    <div class="full-menu">
+      <div class="full-menu-header">
+        <h3>Full Menu</h3>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-cat">
+          <p class="menu-cat-name">Tacos</p>
+          <ul>
+            <li>Asada Tacos</li>
+            <li>Al Pastor Tacos</li>
+            <li>Pollo Tacos</li>
+          </ul>
+        </div>
+        <div class="menu-cat">
+          <p class="menu-cat-name">Quesadillas</p>
+          <ul>
+            <li>Asada Quesadilla</li>
+            <li>Al Pastor Quesadilla</li>
+            <li>Pollo Quesadilla</li>
+          </ul>
+        </div>
+        <div class="menu-cat">
+          <p class="menu-cat-name">Specialties</p>
+          <ul>
+            <li>Quesabirria</li>
+            <li>Taco Boxes</li>
+          </ul>
+        </div>
+        <div class="menu-cat">
+          <p class="menu-cat-name">Drinks</p>
+          <ul>
+            <li>Sodas</li>
+          </ul>
+        </div>
+      </div>
+      <p class="menu-note">Final menu options may vary by event.</p>
+    </div>
+
+    <div class="menu-cta">
+      <h2>Ready to reserve<br>your date?</h2>
+      <a href="#book" class="btn btn-primary btn-lg">Book Now</a>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       #book — BOOK NOW SECTION
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="book">
+
+    <header class="section-header">
+      <p class="page-eyebrow">Reserve Your Date</p>
+      <h2 class="section-title">Reserve Your<br>Catering Date</h2>
+      <p class="page-subtitle">Choose your package and reserve your spot with a $200 deposit.</p>
+      <div class="section-divider"></div>
+    </header>
+
+    <div class="book-intro">
+      <p>
+        TC Tacos Catering has <strong>3 food trucks</strong> available, allowing up to
+        <strong>3 events per day</strong> depending on availability. A <strong>$200 deposit
+        holds your date</strong> — you are not paying the full package price online.
+        Tony will follow up to confirm your final menu, total price, and remaining balance.
+      </p>
+    </div>
+
+    <!-- Package cards -->
+    <div class="packages-section">
+      <div class="packages-grid">
+
+        <div class="package-card">
+          <p class="package-name">Small Event Catering</p>
+          <div class="package-price">$1,000</div>
+          <p class="package-price-sub">Starting package</p>
+          <p class="package-desc">Great for smaller parties, family gatherings, and casual events.</p>
+          <p class="package-deposit-note">Only $200 deposit to reserve</p>
+          <a href="#booking" class="btn btn-outline">Reserve with $200 Deposit</a>
+        </div>
+
+        <div class="package-card featured">
+          <p class="package-name">Standard Event Catering</p>
+          <div class="package-price">$2,000</div>
+          <p class="package-price-sub">Starting package</p>
+          <p class="package-desc">A strong option for birthdays, work events, private parties, and weekend celebrations.</p>
+          <p class="package-deposit-note">Only $200 deposit to reserve</p>
+          <a href="#booking" class="btn btn-primary">Reserve with $200 Deposit</a>
+        </div>
+
+        <div class="package-card">
+          <p class="package-name">Large Event Catering</p>
+          <div class="package-price">$3,000</div>
+          <p class="package-price-sub">Starting package</p>
+          <p class="package-desc">Built for weddings, larger events, receptions, community gatherings, and busy celebrations.</p>
+          <p class="package-deposit-note">Only $200 deposit to reserve</p>
+          <a href="#booking" class="btn btn-outline">Reserve with $200 Deposit</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Booking placeholder
+         CALENDLY: when ready, replace the booking-card below with:
+         <div class="calendly-inline-widget" data-url="YOUR_URL"
+              style="min-width:320px;height:700px;"></div>
+         <script src="https://assets.calendly.com/assets/external/widget.js" async></script> -->
+    <div class="booking-section" id="booking">
+      <p class="booking-section-label">How to Reserve</p>
+      <div class="booking-card">
+        <div class="booking-card-icon">📅</div>
+        <h3>Online Booking<br>Coming Soon</h3>
+        <p>
+          Call or text Tony directly to reserve your date.
+          He'll confirm availability, finalize your menu, and collect the $200 deposit.
+        </p>
+        <div class="booking-actions">
+          <a href="tel:5097133555" class="btn btn-primary btn-lg">Call Now</a>
+          <a href="sms:5097133555" class="btn btn-outline btn-lg">Text Tony</a>
+        </div>
+        <hr class="booking-divider">
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <span class="contact-item-text"><a href="tel:5097133555">(509) 713-3555</a></span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <span class="contact-item-text"><a href="mailto:tctacoscatering@yahoo.com">tctacoscatering@yahoo.com</a></span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📷</div>
+            <span class="contact-item-text"><a href="https://instagram.com/tctacoscatering" target="_blank" rel="noopener">@tctacoscatering</a></span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">👥</div>
+            <span class="contact-item-text"><a href="https://www.facebook.com/tctacoscatering" target="_blank" rel="noopener">TC Tacos Catering on Facebook</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════ -->
   <footer class="footer">
     <div class="footer-grid">
       <div>
@@ -99,11 +398,11 @@
         <p class="footer-tagline">Fresh taco catering for backyard parties, weddings, and events across the Tri-Cities. Reserve with a $200 deposit.</p>
       </div>
       <div class="footer-col">
-        <h4>Pages</h4>
+        <h4>Navigation</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="menu.html">Menu</a></li>
-          <li><a href="book.html">Book Now</a></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#book">Book Now</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -112,7 +411,7 @@
           <li><a href="tel:5097133555">(509) 713-3555</a></li>
           <li><a href="mailto:tctacoscatering@yahoo.com">tctacoscatering@yahoo.com</a></li>
           <li><a href="https://instagram.com/tctacoscatering" target="_blank" rel="noopener">@tctacoscatering</a></li>
-          <li><a href="https://www.facebook.com/tctacoscatering" target="_blank" rel="noopener">TC Tacos Catering on Facebook</a></li>
+          <li><a href="https://www.facebook.com/tctacoscatering" target="_blank" rel="noopener">TC Tacos Catering</a></li>
         </ul>
       </div>
     </div>
@@ -121,6 +420,24 @@
       <p>Tri-Cities, WA</p>
     </div>
   </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MOBILE STICKY BAR (hidden on desktop)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="mobile-bar" id="mobileBar">
+    <a href="#menu" class="mobile-bar-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M8 8h8M8 16h5"/></svg>
+      Menu
+    </a>
+    <a href="#book" class="mobile-bar-item mobile-bar-book">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Book
+    </a>
+    <a href="tel:5097133555" class="mobile-bar-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+      Call
+    </a>
+  </div>
 
   <script src="app.js"></script>
 </body>

@@ -1050,3 +1050,98 @@ body { animation: page-in 0.4s ease; }
   font-size: 12px;
   color: var(--text-dim);
 }
+
+/* ============================================================
+   SINGLE-PAGE SECTION ANCHORS
+   ============================================================ */
+
+/* Offset scroll targets so they land below the fixed nav */
+#home, #menu, #book {
+  scroll-margin-top: var(--nav-h);
+}
+
+/* Breathing room between sections */
+#menu, #book {
+  padding-top: 88px;
+}
+
+/* Reserve space at the bottom for the mobile sticky bar */
+@media (max-width: 768px) {
+  body { padding-bottom: 68px; }
+}
+
+/* ============================================================
+   SECTION HEADER — in-page (replaces .page-header)
+   ============================================================ */
+
+.section-header {
+  padding: 0 24px 52px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7vw, 80px);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.02;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   MOBILE STICKY BAR
+   ============================================================ */
+
+.mobile-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    background: rgba(9, 8, 10, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+.mobile-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px 8px 12px;
+  font-family: var(--font-head);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+.mobile-bar-item:active { color: var(--text); }
+
+.mobile-bar-item svg { color: inherit; flex-shrink: 0; }
+
+.mobile-bar-book {
+  background: var(--accent);
+  color: #fff;
+}
+
+.mobile-bar-book:active {
+  background: var(--accent-hover);
+  color: #fff;
+}
