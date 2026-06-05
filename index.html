@@ -3,385 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO Meta Tags -->
-  <title>TC Tacos Catering | Premium Taco Catering in Tri-Cities, WA</title>
-  <meta name="description" content="Sizzle up your next event with premium street-taco catering across the Tri-Cities. Reserve one of our 3 food trucks online today with a $200 deposit.">
-  <meta name="keywords" content="taco catering, Tri-Cities taco catering, Kennewick catering, Pasco catering, Richland catering, street tacos food truck, wedding catering, party catering">
-  <meta name="author" content="TC Tacos Catering">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="TC Tacos Catering | Premium Taco Catering in Tri-Cities">
-  <meta property="og:description" content="Premium street-taco catering for weddings, parties, and celebrations across Tri-Cities and Eastern Washington.">
-  <meta property="og:image" content="./assets/gallery-1.jpg">
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css">
-  
-  <!-- Icons & Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>TC Tacos Catering | Tri-Cities Taco Catering</title>
+  <meta name="description" content="Fresh taco catering for backyard parties, weddings, and events across the Tri-Cities. 3 food trucks, simple online reservations, $200 deposit to hold your date.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- Calendly widget script -->
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="smoky-overlay">
+<body>
 
-  <!-- Cinematic Film Grain Overlay -->
-  <div class="film-grain"></div>
-
-  <!-- Header Section -->
-  <header>
-    <div class="logo-container">
-      <!-- [TODO] Replace with final logo file if provided. Currently uses pulled online profile logo. -->
-      <img src="./assets/logo.png" alt="TC Tacos Catering Logo">
-      <span class="logo-text">TC TACOS</span>
-    </div>
-    
-    <nav>
+  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">TC <span>Tacos</span> Catering</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav-links">
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="book.html" class="nav-cta">Book Now</a></li>
       </ul>
-    </nav>
-    
-    <div class="header-cta">
-      <a href="#booking" class="btn btn-outline-glow" style="padding: 10px 22px; font-size: 0.9rem; border-radius: 6px;">
-        Reserve Date
-      </a>
     </div>
-  </header>
+  </nav>
 
-  <!-- Hero Section -->
-  <div class="hero-wrapper" id="hero">
-    <video autoplay muted loop playsinline preload="metadata" class="hero-video-bg" id="hero-video" poster="assets/hero-poster.jpg">
-      <source src="./assets/tc-tacos-bg.mp4" type="video/mp4">
-    </video>
-    
-    <!-- Dark Vignette Overlay -->
-    <div class="hero-overlay-dark"></div>
-    
-    <!-- Dual Smoke Drift Overlay -->
-    <div class="smoke-overlay-container">
-      <div class="smoke-layer"></div>
-      <div class="smoke-layer-2"></div>
+  <!-- ── Hero ─────────────────────────────────────────────────── -->
+  <!--
+    VIDEO SETUP:
+    When ready, place these files in the /assets folder:
+      assets/event-setup-bg.mp4     ← hero background video
+      assets/event-setup-poster.jpg ← first-frame poster image
+    The video will play automatically. No code changes needed.
+  -->
+  <section class="hero">
+    <div class="hero-bg">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="assets/event-setup-poster.jpg"
+        aria-hidden="true"
+      >
+        <source src="assets/event-setup-bg.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
     </div>
-    
-    <!-- Firelight Ambient Flicker Overlay -->
-    <div class="firelight-overlay"></div>
-    
-    <main class="hero-content">
-      <span class="hero-badge"><i class="fas fa-fire"></i> Sizzling Live Grill &mdash; Tri-Cities, WA</span>
-      <h1>TC Tacos<span>Catering</span></h1>
-      <p class="hero-subheadline">
-        Reserve fresh taco catering for parties, weddings, work events, pop-ups, and celebrations across the Tri-Cities.
-      </p>
-      <p class="hero-support-text">
-        Choose your date, time, and catering option online. A $200 deposit reserves your spot, and Tony will follow up with the remaining balance and final event details.
-      </p>
-      
-      <div class="hero-ctas">
-        <a href="#booking" class="btn btn-primary hero-main-cta">
-          <i class="far fa-calendar-check"></i> Reserve Your Catering Date
-        </a>
-        <div class="hero-secondary-ctas">
-          <a href="#menu" class="btn btn-secondary"><i class="fas fa-utensils"></i> View Menu</a>
-          <a href="tel:5097133555" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Call Now</a>
-          <a href="sms:5097133555" class="btn btn-secondary"><i class="fas fa-comment-alt"></i> Text Us</a>
-        </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Tri-Cities, WA</p>
+      <h1 class="hero-headline">TC Tacos<br>Catering</h1>
+      <p class="hero-subheadline">Backyard parties, weddings, work events,<br>and celebrations across the Tri-Cities.</p>
+      <p class="hero-support">Fresh taco catering, simple online reservations,<br>and a $200 deposit to hold your date.</p>
+      <div class="hero-actions">
+        <a href="menu.html" class="btn btn-outline btn-lg">View Menu</a>
+        <a href="book.html" class="btn btn-primary btn-lg">Book Now</a>
       </div>
-    </main>
-
-    <!-- Hero Bottom Info Badges -->
-    <div class="hero-bottom-badges">
-      <div class="hero-info-badge"><i class="fas fa-truck-moving"></i><span>3 Food Trucks</span></div>
-      <div class="hero-info-badge"><i class="fas fa-calendar-day"></i><span>Up to 3 Events/Day</span></div>
-      <div class="hero-info-badge"><i class="fas fa-lock"></i><span>$200 Deposit</span></div>
-      <div class="hero-info-badge"><i class="fas fa-map-marker-alt"></i><span>Tri-Cities Catering</span></div>
     </div>
-  </div>
 
-  <!-- Quick Trust Strip (Dashboard Badges) -->
+    <!-- Shown until video plays -->
+    <div class="video-status-badge" id="videoStatusBadge">
+      <span class="video-status-dot"></span>
+      Event setup video coming soon
+    </div>
+  </section>
+
+  <!-- ── Trust Strip ───────────────────────────────────────────── -->
   <div class="trust-strip">
-    <div class="trust-container">
-      <div class="trust-badge-card">
-        <div class="status-indicator-box">
-          <div class="status-pulse"></div>
-          <span style="font-size: 0.75rem; color: var(--accent-green);">Active</span>
-        </div>
-        <i class="fas fa-truck-moving"></i>
-        <span>3 Food Trucks</span>
+    <div class="trust-strip-inner">
+      <div class="trust-item">
+        <span class="trust-item-value">3</span>
+        <span class="trust-item-label">Food Trucks</span>
       </div>
-      <div class="trust-badge-card">
-        <i class="fas fa-calendar-day"></i>
-        <span>Up to 3 Events/Day</span>
+      <div class="trust-item">
+        <span class="trust-item-value">3</span>
+        <span class="trust-item-label">Events Per Day</span>
       </div>
-      <div class="trust-badge-card">
-        <i class="fas fa-lock"></i>
-        <span>$200 Date Hold</span>
+      <div class="trust-item">
+        <span class="trust-item-value">$200</span>
+        <span class="trust-item-label">Deposit to Reserve</span>
       </div>
-      <div class="trust-badge-card">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>Tri-Cities Area</span>
-      </div>
-      <div class="trust-badge-card">
-        <i class="fas fa-glass-cheers"></i>
-        <span>All Celebrations</span>
+      <div class="trust-item">
+        <span class="trust-item-value">Tri-Cities</span>
+        <span class="trust-item-label">Catering</span>
       </div>
     </div>
   </div>
 
-  <!-- How It Works Section -->
-  <section id="how-it-works">
-    <div class="section-header">
-      <h2>Reserve your taco catering in minutes</h2>
-      <p>Secure one of our 3 active food trucks in four simple steps.</p>
-    </div>
-    
-    <div class="how-it-works-timeline">
-      <div class="steps-grid">
-        <div class="glass-card step-card">
-          <div class="step-number">01</div>
-          <h3>Choose Date & Time</h3>
-          <p>Select an open date on our Calendly reservation calendar.</p>
-        </div>
-        
-        <div class="glass-card step-card">
-          <div class="step-number">02</div>
-          <h3>Pick Catering Option</h3>
-          <p>Choose the size of your gathering—from casual pop-ups to large receptions.</p>
-        </div>
-        
-        <div class="glass-card step-card">
-          <div class="step-number">03</div>
-          <h3>Pay $200 Deposit</h3>
-          <p>Lock in your catering date instantly with a secure deposit payment.</p>
-        </div>
-        
-        <div class="glass-card step-card">
-          <div class="step-number">04</div>
-          <h3>Finalize Details</h3>
-          <p>Tony Chairez will call you to finalize your custom menu and event schedule.</p>
-        </div>
+  <!-- ── Footer ────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">TC <span>Tacos</span> Catering</div>
+        <p class="footer-tagline">Fresh taco catering for backyard parties, weddings, and events across the Tri-Cities. Reserve with a $200 deposit.</p>
       </div>
-    </div>
-    
-    <p class="how-it-works-note">
-      This online flow captures basic event requirements before Tony's follow-up call, making your final booking process seamless.
-    </p>
-  </section>
-
-  <!-- Menu Preview Section -->
-  <section id="menu">
-    <div class="section-header">
-      <h2>Menu Preview</h2>
-      <p>Final menu and package options will be confirmed soon. For now, here are known sample options.</p>
-    </div>
-    
-    <!-- Dynamically Rendered Menu Cards (thumbnails added in app.js) -->
-    <div class="menu-grid" id="menu-grid-target"></div>
-  </section>
-
-  <!-- Catering Packages Section -->
-  <section id="packages">
-    <div class="section-header">
-      <h2>Choose a catering option for your event</h2>
-      <p>Submit your deposit to reserve your date. Custom guest totals and final menus will be confirmed during follow-up.</p>
-    </div>
-    
-    <!-- Dynamically Rendered Packages Grid -->
-    <div class="packages-grid" id="packages-grid-target"></div>
-  </section>
-
-  <!-- Calendly Booking Section -->
-  <section id="booking">
-    <div class="section-header">
-      <h2>Reserve Your Catering Date</h2>
-      <p>Select your date and time, answer a few event questions, and pay the $200 deposit to reserve your spot.</p>
-    </div>
-    
-    <div class="booking-container">
-      <!-- Premium Terminal Frame -->
-      <div class="booking-console">
-        <div class="console-corner console-top-left"></div>
-        <div class="console-corner console-top-right"></div>
-        <div class="console-corner console-bottom-left"></div>
-        <div class="console-corner console-bottom-right"></div>
-        
-        <div class="calendly-widget-wrapper">
-          <!-- Loader Spinner -->
-          <div class="calendly-loading-spinner">
-            <div class="spinner"></div>
-            <p style="font-family: var(--font-heading); color: var(--glow); letter-spacing: 1px;">LOADING RESERVATION TERMINAL...</p>
-          </div>
-          
-          <!-- [TODO] Replace with Tony's final Calendly link when ready -->
-          <div class="calendly-inline-widget" data-url="https://calendly.com/tctacoscatering/catering-reservation" style="min-width:320px;height:750px;"></div>
-        </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="book.html">Book Now</a></li>
+        </ul>
       </div>
-      
-      <div class="booking-fallback">
-        <a href="https://calendly.com/tctacoscatering/catering-reservation" target="_blank" class="btn btn-primary">
-          <i class="fas fa-external-link-alt"></i> Open Booking Calendar
-        </a>
-        <p class="booking-notice">
-          If the terminal fails to load automatically, click the button above to reserve your date directly on Calendly.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- What to Have Ready Section -->
-  <section id="ready">
-    <div class="ready-section-wrapper glass-card">
-      <div class="ready-card">
-        <div class="ready-info">
-          <h3>Before you reserve, have this ready:</h3>
-          <p>Preparing these details guarantees a fast hand-off when Tony contacts you to complete booking specifics.</p>
-        </div>
-        <ul class="ready-checklist">
-          <li><i class="fas fa-fire"></i> Event date</li>
-          <li><i class="fas fa-fire"></i> Event start time</li>
-          <li><i class="fas fa-fire"></i> Event location</li>
-          <li><i class="fas fa-fire"></i> Number of guests</li>
-          <li><i class="fas fa-fire"></i> Preferred package</li>
-          <li><i class="fas fa-fire"></i> Target menu items</li>
-          <li><i class="fas fa-fire"></i> Best contact phone</li>
-          <li><i class="fas fa-fire"></i> Any special notes</li>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:5097133555">(509) 713-3555</a></li>
+          <li><a href="mailto:tctacoscatering@yahoo.com">tctacoscatering@yahoo.com</a></li>
+          <li><a href="https://instagram.com/tctacoscatering" target="_blank" rel="noopener">@tctacoscatering</a></li>
+          <li><a href="https://www.facebook.com/tctacoscatering" target="_blank" rel="noopener">TC Tacos Catering on Facebook</a></li>
         </ul>
       </div>
     </div>
-  </section>
-
-  <!-- Catering Services Section -->
-  <section id="services">
-    <div class="section-header">
-      <h2>Catering for the moments people remember</h2>
-      <p>From private birthday parties to outdoor weddings, TC Tacos Catering brings live-grill energy directly to your location.</p>
-    </div>
-    
-    <!-- Dynamically Rendered Services Grid -->
-    <div class="services-grid" id="services-grid-target"></div>
-  </section>
-
-  <!-- Gallery Section -->
-  <section id="gallery">
-    <div class="section-header">
-      <h2>Fresh food. Real events. Big flavor.</h2>
-      <p>Experience the quality we bring to every event. All images show temporary sample options.</p>
-    </div>
-    
-    <!-- Dynamically Rendered Gallery Grid -->
-    <div class="gallery-grid" id="gallery-grid-target"></div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section id="faq">
-    <div class="section-header">
-      <h2>Frequently Asked Questions</h2>
-      <p>Find quick answers regarding food truck capabilities, deposits, and regional service boundaries.</p>
-    </div>
-    
-    <div class="faq-wrapper">
-      <!-- Dynamically Rendered FAQ Accordions -->
-      <div class="accordion-list" id="faqs-target"></div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="glass-card contact-grid">
-      <div class="contact-info-panel">
-        <h2>Questions before reserving?</h2>
-        <p>Call, text, email, or direct message us on social media if you need clarification before locking in your reservation.</p>
-        
-        <div class="contact-details">
-          <div class="contact-item">
-            <div class="contact-icon-box"><i class="fas fa-phone-alt"></i></div>
-            <div>
-              <strong>Phone:</strong><br>
-              <a href="tel:5097133555">(509) 713-3555</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
-            <div>
-              <strong>Email:</strong><br>
-              <a href="mailto:tctacoscatering@yahoo.com">tctacoscatering@yahoo.com</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon-box"><i class="fab fa-instagram"></i></div>
-            <div>
-              <strong>Instagram:</strong><br>
-              <a href="https://instagram.com/tctacoscatering" target="_blank">@tctacoscatering</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon-box"><i class="fab fa-facebook-f"></i></div>
-            <div>
-              <strong>Facebook:</strong><br>
-              <a href="https://facebook.com/tctacoscatering" target="_blank">TC Tacos Catering</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="contact-actions">
-        <a href="tel:5097133555" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Call Now</a>
-        <a href="sms:5097133555" class="btn btn-secondary"><i class="fas fa-comment-alt"></i> Text Now</a>
-        <a href="mailto:tctacoscatering@yahoo.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email Us</a>
-        <a href="https://instagram.com/tctacoscatering" target="_blank" class="btn btn-outline-glow"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="#booking" class="btn btn-green-accent contact-reserve-btn"><i class="far fa-calendar-alt"></i> Reserve Your Catering Date</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="./assets/logo.png" alt="TC Tacos Catering Logo">
-        <span class="logo-text">TC TACOS</span>
-      </div>
-      <p style="font-size: 0.95rem; max-width: 450px; margin: 0 auto;">
-        High-end mobile taco catering cooked live over flame. Serving the Tri-Cities and surrounding areas.
-      </p>
-      
-      <ul class="footer-links">
-        <li><a href="#hero">Back to Top</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-      
-      <div class="footer-socials">
-        <a href="https://facebook.com/tctacoscatering" target="_blank" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://instagram.com/tctacoscatering" target="_blank" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-      
-      <div class="copyright">
-        &copy; 2026 TC Tacos Catering. All rights reserved. Prototype preview layout.
-      </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 TC Tacos Catering. All rights reserved.</p>
+      <p>Tri-Cities, WA</p>
     </div>
   </footer>
 
-  <!-- Sticky Mobile Bar -->
-  <div class="sticky-mobile-bar">
-    <a href="#booking" class="btn btn-primary"><i class="far fa-calendar-alt"></i> Reserve</a>
-    <a href="tel:5097133555" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Call</a>
-    <a href="sms:5097133555" class="btn btn-outline-glow"><i class="fas fa-comment-alt"></i> Text</a>
-  </div>
-
-  <!-- Main scripts -->
-  <script src="app.js" defer></script>
+  <script src="app.js"></script>
 </body>
 </html>

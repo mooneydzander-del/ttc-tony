@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | TC Tacos Catering</title>
+  <meta name="description" content="Fresh taco catering menu — asada, al pastor, pollo tacos, quesadillas, quesabirria, taco boxes, and more for your event.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">TC <span>Tacos</span> Catering</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="book.html" class="nav-cta">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── Page Header ─────────────────────────────────────────── -->
+    <header class="page-header">
+      <p class="page-eyebrow">What We Serve</p>
+      <h1 class="page-title">Menu</h1>
+      <p class="page-subtitle">Fresh taco catering favorites for parties and events.</p>
+      <div class="section-divider"></div>
+    </header>
+
+    <!-- ── Sliding Food Carousel ───────────────────────────────── -->
+    <!--
+      Cards are duplicated below for the seamless infinite loop.
+      Each set = 9 items. The CSS animation moves -50% (one full set).
+      To add/remove items: update BOTH the original and duplicate sets.
+    -->
+    <div class="carousel-outer">
+      <div class="carousel-track">
+
+        <!-- Original set -->
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/asada-tacos.png" alt="Asada Tacos" loading="lazy">
+          <p class="food-card-name">Asada Tacos</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/al-pastor-tacos.png" alt="Al Pastor Tacos" loading="lazy">
+          <p class="food-card-name">Al Pastor Tacos</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/pollo-tacos.png" alt="Pollo Tacos" loading="lazy">
+          <p class="food-card-name">Pollo Tacos</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/asada-quesadilla.png" alt="Asada Quesadilla" loading="lazy">
+          <p class="food-card-name">Asada Quesadilla</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/al-pastor-quesadilla.png" alt="Al Pastor Quesadilla" loading="lazy">
+          <p class="food-card-name">Al Pastor Quesadilla</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/pollo-quesadilla.png" alt="Pollo Quesadilla" loading="lazy">
+          <p class="food-card-name">Pollo Quesadilla</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/quesabirria.png" alt="Quesabirria" loading="lazy">
+          <p class="food-card-name">Quesabirria</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/taco-boxes.png" alt="Taco Boxes" loading="lazy">
+          <p class="food-card-name">Taco Boxes</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/sodas.png" alt="Sodas" loading="lazy">
+          <p class="food-card-name">Sodas</p>
+        </div>
+
+        <!-- Duplicate set — required for seamless loop -->
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/asada-tacos.png" alt="Asada Tacos" loading="lazy">
+          <p class="food-card-name">Asada Tacos</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/al-pastor-tacos.png" alt="Al Pastor Tacos" loading="lazy">
+          <p class="food-card-name">Al Pastor Tacos</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/pollo-tacos.png" alt="Pollo Tacos" loading="lazy">
+          <p class="food-card-name">Pollo Tacos</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/asada-quesadilla.png" alt="Asada Quesadilla" loading="lazy">
+          <p class="food-card-name">Asada Quesadilla</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/al-pastor-quesadilla.png" alt="Al Pastor Quesadilla" loading="lazy">
+          <p class="food-card-name">Al Pastor Quesadilla</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/pollo-quesadilla.png" alt="Pollo Quesadilla" loading="lazy">
+          <p class="food-card-name">Pollo Quesadilla</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/quesabirria.png" alt="Quesabirria" loading="lazy">
+          <p class="food-card-name">Quesabirria</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/taco-boxes.png" alt="Taco Boxes" loading="lazy">
+          <p class="food-card-name">Taco Boxes</p>
+        </div>
+        <div class="food-card">
+          <img class="food-card-image" src="assets/menu/sodas.png" alt="Sodas" loading="lazy">
+          <p class="food-card-name">Sodas</p>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="menu-note">Final menu options may vary by event.</p>
+
+    <!-- ── Menu CTA ─────────────────────────────────────────────── -->
+    <section class="menu-cta">
+      <h2>Ready to reserve<br>your date?</h2>
+      <a href="book.html" class="btn btn-primary btn-lg">Book Now</a>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">TC <span>Tacos</span> Catering</div>
+        <p class="footer-tagline">Fresh taco catering for backyard parties, weddings, and events across the Tri-Cities. Reserve with a $200 deposit.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="book.html">Book Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:5097133555">(509) 713-3555</a></li>
+          <li><a href="mailto:tctacoscatering@yahoo.com">tctacoscatering@yahoo.com</a></li>
+          <li><a href="https://instagram.com/tctacoscatering" target="_blank" rel="noopener">@tctacoscatering</a></li>
+          <li><a href="https://www.facebook.com/tctacoscatering" target="_blank" rel="noopener">TC Tacos Catering on Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 TC Tacos Catering. All rights reserved.</p>
+      <p>Tri-Cities, WA</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
