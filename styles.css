@@ -263,11 +263,12 @@ body { animation: page-in 0.4s ease; }
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(ellipse 90% 60% at 15% 85%, rgba(185, 72, 16, 0.38) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 70% at 80% 25%, rgba(130, 58, 12, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse 100% 55% at 50% 100%, rgba(110, 48, 8, 0.48) 0%, transparent 58%),
-    radial-gradient(ellipse 40% 40% at 60% 60%, rgba(80, 32, 6, 0.12) 0%, transparent 70%),
-    #09080a;
+    radial-gradient(ellipse 44% 28% at 72% 18%, rgba(200, 145, 28, 0.09) 0%, transparent 72%),
+    radial-gradient(ellipse 92% 68% at 4% 96%, rgba(218, 78, 10, 0.56) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 62% at 92% 72%, rgba(160, 60, 10, 0.28) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 58% at 50% 100%, rgba(145, 56, 8, 0.64) 0%, transparent 56%),
+    radial-gradient(ellipse 72% 52% at 28% 72%, rgba(88, 34, 8, 0.24) 0%, transparent 60%),
+    #07060a;
 }
 
 .hero-video {
@@ -289,10 +290,10 @@ body { animation: page-in 0.4s ease; }
   z-index: 2;
   background: linear-gradient(
     to bottom,
-    rgba(9,8,10,0.18) 0%,
-    rgba(9,8,10,0.06) 35%,
-    rgba(9,8,10,0.55) 75%,
-    rgba(9,8,10,0.94) 100%
+    rgba(7,6,10,0.28) 0%,
+    rgba(7,6,10,0.06) 30%,
+    rgba(7,6,10,0.50) 68%,
+    rgba(7,6,10,0.97) 100%
   );
 }
 
@@ -529,7 +530,7 @@ body { animation: page-in 0.4s ease; }
   align-items: flex-end;
   width: max-content;
   padding-bottom: 20px; /* room for ground shadow */
-  animation: belt-move 45s linear infinite;
+  animation: belt-move 20s linear infinite;
   cursor: default;
 }
 
@@ -554,56 +555,39 @@ body { animation: page-in 0.4s ease; }
   gap: 14px;
 }
 
-/* Circular plate */
+/* Circular plate — overflow:hidden crops image to circle, inset shadow vignettes edges */
 .dish-plate {
   position: relative;
-  width: 156px;
-  height: 156px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 164px;
+  height: 164px;
   border-radius: 50%;
+  overflow: hidden;
   background: radial-gradient(circle at 38% 34%, #2e2018 0%, #1c1208 55%, #110c06 100%);
   box-shadow:
-    0 14px 40px rgba(0, 0, 0, 0.75),
-    0 4px 12px rgba(0, 0, 0, 0.55),
-    inset 0 2px 4px rgba(255, 255, 255, 0.05),
-    0 0 0 1px rgba(196, 137, 58, 0.1);
+    0 16px 44px rgba(0, 0, 0, 0.80),
+    0 24px 36px -12px rgba(0, 0, 0, 0.62),
+    inset 0 0 44px 10px rgba(6, 5, 3, 0.74);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Ground / cast shadow under plate */
-.dish-plate::after {
-  content: '';
-  position: absolute;
-  bottom: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 110px;
-  height: 18px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
-  filter: blur(8px);
-  z-index: -1;
-}
-
 .dish-card:hover .dish-plate {
-  transform: translateY(-4px);
+  transform: translateY(-5px) scale(1.03);
   box-shadow:
-    0 22px 52px rgba(0, 0, 0, 0.8),
-    0 6px 18px rgba(0, 0, 0, 0.6),
-    inset 0 2px 4px rgba(255, 255, 255, 0.06),
-    0 0 0 1px rgba(196, 137, 58, 0.18);
+    0 24px 56px rgba(0, 0, 0, 0.85),
+    0 30px 44px -14px rgba(0, 0, 0, 0.68),
+    inset 0 0 44px 10px rgba(6, 5, 3, 0.74);
 }
 
-/* Image — hidden until loaded; emoji shown by default */
+/* Image — hidden until loaded; emoji shown by default.
+   overflow:hidden on .dish-plate crops the image to a circle.
+   filter darkens gray/white image backgrounds and warms food colors. */
 .dish-img {
-  position: relative;
-  z-index: 1;
-  width: 128px;
-  height: 128px;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.65));
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72) contrast(1.12) saturate(1.28) sepia(0.07);
   display: none;
 }
 
@@ -611,8 +595,11 @@ body { animation: page-in 0.4s ease; }
 .dish-img.loaded ~ .dish-emoji { display: none; }
 
 .dish-emoji {
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 72px;
   line-height: 1;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
@@ -643,19 +630,13 @@ body { animation: page-in 0.4s ease; }
   margin-bottom: 48px;
 }
 
-.full-menu-header h2 {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 40px);
+.full-menu-eyebrow {
+  font-family: var(--font-head);
+  font-size: 11px;
   font-weight: 600;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-
-.full-menu-header p {
-  font-family: var(--font-body);
-  font-size: 14px;
-  color: var(--text-dim);
-  font-style: italic;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-2);
 }
 
 .menu-grid {
