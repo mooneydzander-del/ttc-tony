@@ -7,7 +7,7 @@
   <meta name="description" content="Fresh taco catering for backyard parties, weddings, and events across the Tri-Cities. 3 food trucks, $200 deposit to reserve.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pacifico&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,50 +34,102 @@
        ═══════════════════════════════════════════════════════════ -->
   <section id="home">
 
-    <!-- Hero
-         VIDEO SETUP: drop these files into /assets and the hero
-         automatically shows the video — no code changes needed.
-           assets/event-setup-bg.mp4
-           assets/event-setup-poster.jpg                          -->
-    <div class="hero">
-      <div class="hero-bg">
-        <!-- Animated fire glow layer -->
-        <div class="hero-fire" aria-hidden="true"></div>
-        <!-- Light sweep effect -->
-        <div class="hero-sweep" aria-hidden="true"></div>
+    <!-- ────────────────────────────────────────────────────────
+         HERO — 6-LAYER CINEMATIC STRUCTURE
+         L1: Video BG → L2: Dark overlay → L3: Fire/glow
+         L4: Trailer wrap graphics → L5: Embers → L6: Content
+         ──────────────────────────────────────────────────────── -->
+    <div class="hero" id="heroSection">
+
+      <!-- ─ L1: Video background (uploaded TC Tacos trailer wrap video) ─ -->
+      <div class="hero-video-layer" aria-hidden="true">
+        <!--
+          VIDEO: tc-tacos-cinematic-bg.mp4 (trailer wrap video, ~9.4MB)
+          Path: /public/videos/tc-tacos-cinematic-bg.mp4
+          Opacity ~0.16 via CSS — video shows texture without overpowering text
+        -->
         <video
-          class="hero-video"
+          class="hero-bg-video"
           autoplay muted loop playsinline
-          poster="assets/event-setup-poster.jpg"
           aria-hidden="true"
         >
-          <source src="assets/event-setup-bg.mp4" type="video/mp4">
+          <source media="(max-width: 768px)" src="/public/videos/tc-tacos-cinematic-bg-mobile.mp4" type="video/mp4">
+          <source src="/public/videos/tc-tacos-cinematic-bg.mp4" type="video/mp4">
         </video>
-        <div class="hero-overlay"></div>
       </div>
 
-      <!-- Ember particles -->
+      <!-- ─ L2: Dark overlay (text readability) ─ -->
+      <div class="hero-dark-overlay" aria-hidden="true"></div>
+
+      <!-- ─ L3: Fire glow + smoke + golden sweep ─ -->
+      <div class="hero-glow-layer" aria-hidden="true">
+        <div class="hero-fire" aria-hidden="true"></div>
+        <div class="hero-smoke" aria-hidden="true"></div>
+        <div class="hero-sweep" aria-hidden="true"></div>
+      </div>
+
+      <!-- ─ L4: Trailer wrap graphics (chrome trim, rivets, flames, food circles) ─ -->
+      <div class="hero-wrap-layer" aria-hidden="true">
+        <!-- Chrome top trim strip (matches trailer's horizontal chrome edging) -->
+        <div class="hero-chrome-top"></div>
+        <!-- Chrome bottom trim strip -->
+        <div class="hero-chrome-bottom"></div>
+        <!-- Jagged flame strip along bottom edge — matches trailer flame graphics -->
+        <div class="hero-flame-strip"></div>
+        <!-- Circular food photos — decorative only, desktop-wide screens only -->
+        <div class="hero-food-circles">
+          <div class="hero-food-circle">
+            <img src="assets/menu/asada-tacos.png" alt="" aria-hidden="true">
+            <span class="food-circle-emoji" aria-hidden="true">🥩</span>
+          </div>
+          <div class="hero-food-circle">
+            <img src="assets/menu/quesabirria.png" alt="" aria-hidden="true">
+            <span class="food-circle-emoji" aria-hidden="true">🌶️</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─ L5: Ember particles ─ -->
       <div class="hero-embers" aria-hidden="true">
         <span></span><span></span><span></span><span></span>
         <span></span><span></span><span></span><span></span>
       </div>
 
+      <!-- ─ L6: Main hero content ─ -->
       <div class="hero-content">
+
+        <!-- LOGO: When real logo file is ready, uncomment this block.
+             Place file at: public/logo/tc-tacos-logo.png             -->
+        <!-- <div class="hero-logo-area">
+          <img src="/public/logo/tc-tacos-logo.png" alt="TC Tacos Catering" class="hero-logo-img">
+        </div> -->
+
         <p class="hero-tagline">Best Service In Town</p>
-        <p class="hero-eyebrow">Live Taco Catering · Tri-Cities, WA</p>
+        <p class="hero-eyebrow">Live Taco Catering &nbsp;·&nbsp; Tri-Cities, WA</p>
         <h1 class="hero-headline">TC Tacos<br>Catering</h1>
-        <p class="hero-subheadline">Backyard parties, weddings, work events,<br>and celebrations across the Tri-Cities.</p>
-        <p class="hero-support">3 Food Trucks &nbsp;·&nbsp; Made Fresh On-Site &nbsp;·&nbsp; $200 Holds Your Date</p>
+        <p class="hero-subheadline">Backyard parties, weddings, work events,<br class="br-desktop"> and celebrations across the Tri-Cities.</p>
+
+        <!-- Bold phone number — very visible like trailer signage -->
+        <a href="tel:5097133555" class="hero-phone-cta">
+          <svg class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+          <span class="phone-number">509.713.3555</span>
+        </a>
+
+        <!-- Trust badges inline -->
+        <div class="hero-badges">
+          <span>3 Food Trucks</span>
+          <span class="hero-badge-dot">·</span>
+          <span>Made Fresh On-Site</span>
+          <span class="hero-badge-dot">·</span>
+          <span>$200 Holds Your Date</span>
+        </div>
+
         <div class="hero-actions">
           <a href="#menu" class="btn btn-outline btn-lg">View Menu</a>
           <a href="#book" class="btn btn-primary btn-lg">Book Now</a>
         </div>
       </div>
 
-      <div class="video-status-badge" id="videoStatusBadge">
-        <span class="video-status-dot"></span>
-        Event setup video coming soon
-      </div>
     </div>
 
     <!-- Trust strip -->
@@ -459,6 +511,10 @@
     </a>
   </div>
 
+  <!-- GSAP + ScrollTrigger via CDN — cinematic scroll/parallax effects -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="app.js"></script>
+  <script src="cinematic.js"></script>
 </body>
 </html>

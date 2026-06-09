@@ -82,19 +82,27 @@
   });
 })();
 
-// ── Hero video: fade in and hide "coming soon" badge ─────────────
+// ── Hero video: start playing, handle fallback ───────────────────
 (function initHeroVideo() {
-  var video = document.querySelector('.hero-video');
-  var badge = document.getElementById('videoStatusBadge');
+  var video = document.querySelector('.hero-bg-video');
   if (!video) return;
 
-  video.addEventListener('playing', function onPlay() {
-    video.classList.add('playing');
-    if (badge) {
-      badge.style.opacity = '0';
-      setTimeout(function() { badge.style.display = 'none'; }, 1000);
+  // Attempt to play — some browsers require user gesture
+  var playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(function() {
+      // Autoplay blocked — video stays hidden (opacity:0 already low)
+    });
+  }
+})();
+
+// ── Hero food-circle images: show when loaded ────────────────────
+(function initHeroImages() {
+  document.querySelectorAll('.hero-food-circle img').forEach(function(img) {
+    function reveal() {
+      if (img.naturalWidth > 0) img.classList.add('loaded');
     }
-    video.removeEventListener('playing', onPlay);
+    if (img.complete) { reveal(); } else { img.addEventListener('load', reveal); }
   });
 })();
 
