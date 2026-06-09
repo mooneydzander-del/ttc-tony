@@ -42,13 +42,13 @@
   if (p) p.catch(function () {});
 })();
 
-// ── Dish images: reveal photo on load, emoji stays as fallback ─
+// ── Dish images: show real photo, fall back to emoji on error ─
 (function initDishImages() {
   document.querySelectorAll('.dish-img').forEach(function (img) {
-    function reveal() {
-      if (img.naturalWidth > 0) img.classList.add('loaded');
-    }
-    if (img.complete) { reveal(); } else { img.addEventListener('load', reveal); }
+    img.addEventListener('error', function () {
+      img.setAttribute('data-error', 'true');
+    });
+    // Images are display:block by default now — nothing extra needed on load
   });
 })();
 
