@@ -62,14 +62,14 @@
 
   // Individual content elements stagger in
   heroTL.fromTo(
-    '.hero-tagline',
+    '.hero-eyebrow',
     { y: 20, opacity: 0 },
     { y: 0, opacity: 1, duration: 0.7 },
     '-=0.9'
   );
 
   heroTL.fromTo(
-    '.hero-eyebrow',
+    '.hero-tagline',
     { y: 16, opacity: 0 },
     { y: 0, opacity: 1, duration: 0.6 },
     '-=0.6'
@@ -90,13 +90,6 @@
   );
 
   heroTL.fromTo(
-    '.hero-phone-cta',
-    { y: 16, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.5 },
-    '-=0.3'
-  );
-
-  heroTL.fromTo(
     '.hero-badges',
     { y: 12, opacity: 0 },
     { y: 0, opacity: 1, duration: 0.5 },
@@ -106,6 +99,13 @@
   heroTL.fromTo(
     '.hero-actions',
     { y: 16, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.5 },
+    '-=0.3'
+  );
+
+  heroTL.fromTo(
+    '.hero-phone-cta',
+    { y: 12, opacity: 0 },
     { y: 0, opacity: 1, duration: 0.5 },
     '-=0.25'
   );

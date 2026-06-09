@@ -395,22 +395,23 @@ body { animation: page-in 0.5s ease both; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.16;
+  opacity: 0.32;
+  filter: brightness(0.8) contrast(1.15) saturate(1.2);
   will-change: transform;
   /* Ken Burns handled by GSAP */
 }
 
-/* ─ L2: Dark overlay (readability over video) ─────────────────── */
+/* ─ L2: Dark overlay (readability over video — lighter than before) ── */
 .hero-dark-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(
     to bottom,
-    rgba(8,8,8,0.52) 0%,
-    rgba(8,8,8,0.22) 25%,
-    rgba(8,8,8,0.38) 60%,
-    rgba(8,8,8,0.96) 100%
+    rgba(8,8,8,0.36) 0%,
+    rgba(8,8,8,0.10) 28%,
+    rgba(8,8,8,0.22) 55%,
+    rgba(8,8,8,0.90) 100%
   );
 }
 
@@ -616,7 +617,8 @@ body { animation: page-in 0.5s ease both; }
   width: 100%;
   max-width: 840px;
   margin: 0 auto;
-  padding: 0 24px 84px;
+  /* Extra top padding keeps content away from nav on short screens */
+  padding: calc(var(--nav-h) + 48px) 32px 96px;
   /* GSAP will start these hidden and animate in */
   opacity: 0;
 }
@@ -631,16 +633,7 @@ body { animation: page-in 0.5s ease both; }
   width: auto;
 }
 
-/* Pacifico yellow script — "Best Service In Town" */
-.hero-tagline {
-  font-family: var(--font-script);
-  font-size: clamp(16px, 2.2vw, 22px);
-  color: var(--accent-yellow);
-  margin-bottom: 6px;
-  line-height: 1.3;
-  animation: yellow-glow-pulse 3s ease-in-out infinite;
-}
-
+/* Small all-caps eyebrow — "Live Taco Catering • Tri-Cities, WA" */
 .hero-eyebrow {
   font-family: var(--font-head);
   font-size: 12px;
@@ -648,7 +641,17 @@ body { animation: page-in 0.5s ease both; }
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: rgba(246, 196, 49, 0.68);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+/* Pacifico yellow script — "Best Service In Town" */
+.hero-tagline {
+  font-family: var(--font-script);
+  font-size: clamp(17px, 2.4vw, 24px);
+  color: var(--accent-yellow);
+  margin-bottom: 10px;
+  line-height: 1.3;
+  animation: yellow-glow-pulse 3s ease-in-out infinite;
 }
 
 /* ── Bebas Neue headline — solid orange + white outline ──────────
@@ -666,7 +669,7 @@ body { animation: page-in 0.5s ease both; }
   paint-order: stroke fill;
   filter: drop-shadow(0 0 32px rgba(255,90,0,0.48))
           drop-shadow(0 3px 12px rgba(0,0,0,0.70));
-  margin-bottom: 22px;
+  margin-bottom: 28px;
 }
 
 @media (max-width: 480px) {
@@ -677,10 +680,10 @@ body { animation: page-in 0.5s ease both; }
   font-family: var(--font-head);
   font-size: clamp(15px, 1.9vw, 19px);
   font-weight: 500;
-  color: rgba(245, 241, 234, 0.80);
-  max-width: 520px;
-  margin-bottom: 24px;
-  line-height: 1.56;
+  color: rgba(245, 241, 234, 0.82);
+  max-width: 540px;
+  margin-bottom: 28px;
+  line-height: 1.65;
 }
 
 .br-desktop { display: inline; }
@@ -691,7 +694,8 @@ body { animation: page-in 0.5s ease both; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  margin-top: 8px;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -720,14 +724,14 @@ body { animation: page-in 0.5s ease both; }
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px 10px;
-  margin-bottom: 32px;
+  gap: 6px 12px;
+  margin-bottom: 36px;
   font-family: var(--font-head);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(246, 196, 49, 0.70);
+  color: rgba(246, 196, 49, 0.72);
 }
 
 .hero-badge-dot {
@@ -740,6 +744,7 @@ body { animation: page-in 0.5s ease both; }
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
 /* ============================================================
@@ -951,7 +956,7 @@ body { animation: page-in 0.5s ease both; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Circular plate with yellow ring — like trailer circular food photos */
@@ -1153,10 +1158,10 @@ body { animation: page-in 0.5s ease both; }
   background: var(--surface);
   border: 1px solid rgba(246, 196, 49, 0.22);
   border-radius: var(--radius-md);
-  padding: 38px 30px 32px;
+  padding: 44px 36px 40px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -1266,6 +1271,16 @@ body { animation: page-in 0.5s ease both; }
   color: var(--accent-yellow);
   font-size: 12px;
   text-shadow: 0 0 8px rgba(246,196,49,0.50);
+}
+
+/* Pricing footnote below packages grid */
+.packages-note {
+  text-align: center;
+  padding: 20px 24px 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-dim);
+  font-style: italic;
 }
 
 .booking-section {
@@ -1548,23 +1563,34 @@ body { animation: page-in 0.5s ease both; }
    ============================================================ */
 
 @media (max-width: 768px) {
-  /* Smaller phone CTA on mobile */
-  .hero-phone-cta { margin-bottom: 16px; }
-  .phone-number { font-size: clamp(24px, 8vw, 38px); }
-  /* Reduce badge text on mobile */
-  .hero-badges { font-size: 10px; gap: 4px 8px; }
-  /* Stack hero content lower */
-  .hero-content { padding: 0 20px 100px; }
+  /* Video slightly more subtle on mobile */
+  .hero-bg-video { opacity: 0.24; }
+  /* Phone CTA sizing */
+  .hero-phone-cta { margin-bottom: 14px; }
+  .phone-number { font-size: clamp(26px, 9vw, 42px); }
+  /* Badge text */
+  .hero-badges { font-size: 10px; gap: 5px 10px; }
+  /* Hero content padding — clear nav at top, room for mobile bar at bottom */
+  .hero-content { padding: calc(var(--nav-h) + 32px) 20px 108px; }
   /* Section padding */
   #menu, #book { padding-top: 72px; }
-  /* Chrome trim not needed on very small screens */
+  /* Chrome trim thinner on mobile */
   .hero-chrome-top, .hero-chrome-bottom { height: 10px; }
+  /* CTA buttons full width on mobile */
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  /* Package cards full width, better padding */
+  .packages-grid { max-width: 100%; }
+  .package-card { padding: 36px 28px 32px; }
+  /* Booking card */
+  .booking-actions { flex-direction: column; }
+  .booking-actions .btn { width: 100%; justify-content: center; }
 }
 
 @media (max-width: 480px) {
-  .hero-content { padding: 0 16px 96px; }
-  .hero-tagline { font-size: 16px; }
-  .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; }
+  .hero-content { padding: calc(var(--nav-h) + 24px) 18px 104px; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.18em; }
+  .hero-tagline { font-size: 17px; }
   .hero-subheadline { font-size: 14px; }
   .hero-badges { gap: 4px 6px; }
   .hero-badge-dot { display: none; }
