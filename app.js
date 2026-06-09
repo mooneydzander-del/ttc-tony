@@ -1,14 +1,14 @@
 /* ============================================================
    TC TACOS CATERING — APP.JS
    Non-GSAP UI: mobile nav, belt, dish images, video, phone.
-   Horizontal scroll active-state and smooth scroll handled
-   by cinematic.js via GSAP + ScrollToPlugin.
+   Active nav highlighting via IntersectionObserver.
+   Smooth scroll handled by cinematic.js (GSAP).
    ============================================================ */
 
 // ── Mobile nav toggle ────────────────────────────────────────
 (function initMobileNav() {
-  var toggle   = document.querySelector('.nav-toggle');
-  var links    = document.querySelector('.nav-links');
+  var toggle    = document.querySelector('.nav-toggle');
+  var links     = document.querySelector('.nav-links');
   var mobileBar = document.getElementById('mobileBar');
   if (!toggle || !links) return;
 
@@ -28,7 +28,7 @@
     if (mobileBar) mobileBar.style.display = open ? 'none' : '';
   });
 
-  // Close on any nav link click (cinematic.js handles the actual scroll)
+  // Close on any nav link click (cinematic.js handles smooth scroll)
   links.querySelectorAll('a, button').forEach(function (el) {
     el.addEventListener('click', close);
   });
@@ -48,7 +48,6 @@
     img.addEventListener('error', function () {
       img.setAttribute('data-error', 'true');
     });
-    // Images are display:block by default now — nothing extra needed on load
   });
 })();
 
@@ -59,11 +58,11 @@
 
   track.addEventListener('mouseenter', function () { track.classList.add('paused'); });
   track.addEventListener('mouseleave', function () { track.classList.remove('paused'); });
-  track.addEventListener('touchstart',  function () { track.classList.add('paused'); }, { passive: true });
+  track.addEventListener('touchstart',  function () { track.classList.add('paused'); },  { passive: true });
   track.addEventListener('touchend',    function () { track.classList.remove('paused'); }, { passive: true });
 })();
 
-// ── Nav logo click → panel 0 ─────────────────────────────────
+// ── Logo click → scroll to top ────────────────────────────────
 (function initLogoNav() {
   var logo = document.querySelector('.nav-logo');
   if (!logo) return;
@@ -72,7 +71,7 @@
   });
 })();
 
-// ── Mobile bar: tel link for Call button ─────────────────────
+// ── Mobile bar: tel / sms / book buttons ─────────────────────
 (function initMobileBar() {
   var callBtn = document.querySelector('.mobile-bar-call');
   if (callBtn) {
@@ -80,4 +79,81 @@
       window.location.href = 'tel:5097133555';
     });
   }
+  var textBtn = document.querySelector('.mobile-bar-text');
+  if (textBtn) {
+    textBtn.addEventListener('click', function () {
+      window.location.href = 'sms:5097133555';
+    });
+  }
+})();
+
+// ── Active nav section via IntersectionObserver ───────────────
+// Highlights the nav link whose section is most visible in viewport.
+(function initActiveNav() {
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  if (!sections.length || !navLinks.length) return;
+
+  var navH = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
+  ) || 72;
+
+  // Map section id → nav link
+  var linkMap = {};
+  navLinks.forEach(function (link) {
+    var id = (link.getAttribute('href') || '').replace('#', '');
+    if (id) linkMap[id] = link;
+  });
+
+  var activeSectionId = null;
+
+  function setActive(id) {
+    if (id === activeSectionId) return;
+    activeSectionId = id;
+    navLinks.forEach(function (link) { link.classList.remove('active'); });
+    if (linkMap[id]) linkMap[id].classList.add('active');
+  }
+
+  // Use IntersectionObserver with a rootMargin that accounts for fixed nav
+  var observer = new IntersectionObserver(
+    function (entries) {
+      // Find the entry that is most visible
+      var best = null;
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      });
+      if (best) setActive(best.target.id);
+    },
+    {
+      rootMargin: '-' + (navH + 8) + 'px 0px -45% 0px',
+      threshold: [0, 0.1, 0.25, 0.5]
+    }
+  );
+
+  sections.forEach(function (sec) { observer.observe(sec); });
+
+  // Also set on scroll end for accuracy (fallback)
+  var scrollTimer;
+  window.addEventListener('scroll', function () {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function () {
+      // Find section whose top is closest to (but below) nav bottom
+      var navBottom = navH + 16;
+      var closest = null;
+      var closestDist = Infinity;
+      sections.forEach(function (sec) {
+        var rect = sec.getBoundingClientRect();
+        var dist = Math.abs(rect.top - navBottom);
+        if (rect.top <= navBottom + 80 && dist < closestDist) {
+          closestDist = dist;
+          closest = sec;
+        }
+      });
+      if (closest) setActive(closest.id);
+    }, 100);
+  }, { passive: true });
 })();
