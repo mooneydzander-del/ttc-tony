@@ -1,43 +1,14 @@
 /* ============================================================
-   TC TACOS CATERING — APP.JS  (single-page)
+   TC TACOS CATERING — APP.JS
+   Non-GSAP UI: mobile nav, belt, dish images, video, phone.
+   Horizontal scroll active-state and smooth scroll handled
+   by cinematic.js via GSAP + ScrollToPlugin.
    ============================================================ */
 
-// ── Nav scroll state (transparent → frosted) ─────────────────────
-(function initNavScroll() {
-  var nav = document.querySelector('.nav');
-  if (!nav) return;
-  function update() { nav.classList.toggle('scrolled', window.scrollY > 32); }
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-})();
-
-// ── Active nav link — tracks which section is in view ────────────
-(function initActiveSection() {
-  var sections = ['home', 'menu', 'book'];
-  var navH = parseInt(
-    getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
-  ) || 72;
-
-  function update() {
-    var scrollY = window.scrollY + navH + 80;
-    var current = sections[0];
-    sections.forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el && el.offsetTop <= scrollY) current = id;
-    });
-    document.querySelectorAll('.nav-links a[data-section]').forEach(function(a) {
-      a.classList.toggle('active', a.getAttribute('data-section') === current);
-    });
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-})();
-
-// ── Mobile nav toggle ────────────────────────────────────────────
+// ── Mobile nav toggle ────────────────────────────────────────
 (function initMobileNav() {
-  var toggle  = document.querySelector('.nav-toggle');
-  var links   = document.querySelector('.nav-links');
+  var toggle   = document.querySelector('.nav-toggle');
+  var links    = document.querySelector('.nav-links');
   var mobileBar = document.getElementById('mobileBar');
   if (!toggle || !links) return;
 
@@ -49,66 +20,31 @@
     if (mobileBar) mobileBar.style.display = '';
   }
 
-  toggle.addEventListener('click', function() {
+  toggle.addEventListener('click', function () {
     var open = links.classList.toggle('open');
     toggle.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
     document.body.style.overflow = open ? 'hidden' : '';
-    /* Hide mobile bar when the full-screen nav is open */
     if (mobileBar) mobileBar.style.display = open ? 'none' : '';
   });
 
-  links.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', close);
+  // Close on any nav link click (cinematic.js handles the actual scroll)
+  links.querySelectorAll('a, button').forEach(function (el) {
+    el.addEventListener('click', close);
   });
 })();
 
-// ── Smooth scroll — in-page anchors (handles nav-height offset) ──
-(function initSmoothScroll() {
-  var navH = parseInt(
-    getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
-  ) || 72;
-
-  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-    a.addEventListener('click', function(e) {
-      var id = a.getAttribute('href').slice(1);
-      if (!id) return;
-      var target = document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      var top = target.getBoundingClientRect().top + window.scrollY - navH - 8;
-      window.scrollTo({ top: top, behavior: 'smooth' });
-    });
-  });
-})();
-
-// ── Hero video: start playing, handle fallback ───────────────────
+// ── Hero video: start playing, fallback gracefully ───────────
 (function initHeroVideo() {
   var video = document.querySelector('.hero-bg-video');
   if (!video) return;
-
-  // Attempt to play — some browsers require user gesture
-  var playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(function() {
-      // Autoplay blocked — video stays hidden (opacity:0 already low)
-    });
-  }
+  var p = video.play();
+  if (p) p.catch(function () {});
 })();
 
-// ── Hero food-circle images: show when loaded ────────────────────
-(function initHeroImages() {
-  document.querySelectorAll('.hero-food-circle img').forEach(function(img) {
-    function reveal() {
-      if (img.naturalWidth > 0) img.classList.add('loaded');
-    }
-    if (img.complete) { reveal(); } else { img.addEventListener('load', reveal); }
-  });
-})();
-
-// ── Dish images: show photo when loaded, keep emoji as fallback ───
+// ── Dish images: reveal photo on load, emoji stays as fallback ─
 (function initDishImages() {
-  document.querySelectorAll('.dish-img').forEach(function(img) {
+  document.querySelectorAll('.dish-img').forEach(function (img) {
     function reveal() {
       if (img.naturalWidth > 0) img.classList.add('loaded');
     }
@@ -116,16 +52,32 @@
   });
 })();
 
-// ── Belt slider: pause on hover + touch ──────────────────────────
+// ── Belt slider: pause on hover / touch ──────────────────────
 (function initBelt() {
   var track = document.getElementById('beltTrack');
   if (!track) return;
 
-  track.addEventListener('touchstart', function() {
-    track.classList.add('paused');
-  }, { passive: true });
+  track.addEventListener('mouseenter', function () { track.classList.add('paused'); });
+  track.addEventListener('mouseleave', function () { track.classList.remove('paused'); });
+  track.addEventListener('touchstart',  function () { track.classList.add('paused'); }, { passive: true });
+  track.addEventListener('touchend',    function () { track.classList.remove('paused'); }, { passive: true });
+})();
 
-  track.addEventListener('touchend', function() {
-    track.classList.remove('paused');
-  }, { passive: true });
+// ── Nav logo click → panel 0 ─────────────────────────────────
+(function initLogoNav() {
+  var logo = document.querySelector('.nav-logo');
+  if (!logo) return;
+  logo.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+// ── Mobile bar: tel link for Call button ─────────────────────
+(function initMobileBar() {
+  var callBtn = document.querySelector('.mobile-bar-call');
+  if (callBtn) {
+    callBtn.addEventListener('click', function () {
+      window.location.href = 'tel:5097133555';
+    });
+  }
 })();
