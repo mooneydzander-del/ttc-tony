@@ -44,20 +44,92 @@ var TC_BOOKING = {
 
 };
 
+/* ============================================================
+   FLOAT CTA — hide while Calendly popup is open
+   ============================================================
+
+   How it works:
+   - Calendly.initPopupWidget() appends a .calendly-overlay div
+     directly to document.body.
+   - We hide the #floatCta button the moment the popup opens.
+   - A MutationObserver watches document.body's direct children.
+     When .calendly-overlay is removed (popup closed by user),
+     the observer restores the button and disconnects.
+   - The new-tab fallback never touches the float button since
+     no overlay is added to the DOM in that case.
+   ============================================================ */
+
+var _floatObserver = null;
+
+function _hideFloatCta() {
+  var btn = document.getElementById('floatCta');
+  if (!btn) return;
+  btn.style.opacity        = '0';
+  btn.style.pointerEvents  = 'none';
+  btn.style.transform      = 'translateY(6px) scale(0.95)';
+}
+
+function _showFloatCta() {
+  var btn = document.getElementById('floatCta');
+  if (!btn) return;
+  /* Clear inline styles — CSS animation and transform take over again */
+  btn.style.opacity        = '';
+  btn.style.pointerEvents  = '';
+  btn.style.transform      = '';
+}
+
 /**
- * openCalendlyBooking()
- *
- * Called by every .booking-trigger click (Book Now, Reserve Your
- * Date, Reserve With $200 Deposit). Never called by Call Now or
- * Text Tony — those use plain href="tel:" / href="sms:".
- *
- * Behavior:
- *   1. If CALENDLY_URL is set → try Calendly popup widget.
- *   2. If popup widget fails (CDN not loaded, ad blocker, etc.)
- *      → open Calendly link in a new tab as fallback.
- *   3. If CALENDLY_URL is empty → smooth-scroll to #book
- *      (the Call / Text Tony section).
+ * Watch document.body's direct children for the removal of
+ * .calendly-overlay (the element Calendly appends when the popup
+ * opens and removes when it closes).
  */
+function _watchForCalendlyClose() {
+  /* Disconnect any previous observer first */
+  if (_floatObserver) {
+    _floatObserver.disconnect();
+    _floatObserver = null;
+  }
+
+  _floatObserver = new MutationObserver(function (mutations) {
+    for (var i = 0; i < mutations.length; i++) {
+      var removed = mutations[i].removedNodes;
+      for (var j = 0; j < removed.length; j++) {
+        var node = removed[j];
+        if (node.nodeType !== 1) continue;
+
+        /* Calendly appends its overlay as a direct child of <body>
+           with class "calendly-overlay". Detect its removal. */
+        if (node.classList && node.classList.contains('calendly-overlay')) {
+          _showFloatCta();
+          _floatObserver.disconnect();
+          _floatObserver = null;
+          return;
+        }
+      }
+    }
+  });
+
+  /* childList: true — only watch body's direct children,
+     not the whole subtree. Efficient and precise. */
+  _floatObserver.observe(document.body, { childList: true });
+}
+
+/* ============================================================
+   openCalendlyBooking()
+   ============================================================
+
+   Called by every .booking-trigger click (Book Now, Reserve Your
+   Date, Reserve With $200 Deposit). Never called by Call Now or
+   Text Tony — those use plain href="tel:" / href="sms:".
+
+   Behavior:
+     1. If CALENDLY_URL is set → try Calendly popup widget.
+        → hide float button, watch for popup close.
+     2. If popup widget unavailable/throws → open URL in new tab.
+        → float button stays visible (no overlay in DOM).
+     3. If CALENDLY_URL is empty → smooth-scroll to #book.
+   ============================================================ */
+
 function openCalendlyBooking() {
   var url = (TC_BOOKING.CALENDLY_URL || '').trim();
 
@@ -78,13 +150,17 @@ function openCalendlyBooking() {
   try {
     if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
       window.Calendly.initPopupWidget({ url: url });
+      /* Popup is now open — hide float button and watch for close */
+      _hideFloatCta();
+      _watchForCalendlyClose();
       return;
     }
   } catch (err) {
-    /* Popup failed — fall through to new-tab fallback */
+    /* Popup threw (CDN blocked, ad blocker, etc.) — fall through */
   }
 
-  /* ── Fallback: open Calendly in a new tab ── */
+  /* ── Fallback: open Calendly in a new tab ──
+     Float button stays visible since no overlay is added to DOM. */
   window.open(url, '_blank', 'noopener,noreferrer');
 }
 
