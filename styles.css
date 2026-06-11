@@ -167,41 +167,38 @@ body { animation: page-in 0.5s ease both; }
 .lang-switch {
   display: flex;
   align-items: center;
-  gap: 1px;
+  gap: 0;
   flex-shrink: 0;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(246,196,49,.28);
+  border-radius: 6px;
+  padding: 3px;
 }
 
 .lang-btn {
   font-family: var(--font-head);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: rgba(245,241,234,.38);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(245,241,234,.52);
   background: none;
-  border: 1px solid transparent;
+  border: none;
   cursor: pointer;
-  padding: 5px 7px;
-  border-radius: var(--radius-sm);
-  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  padding: 7px 13px;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.22s;
   line-height: 1;
   white-space: nowrap;
 }
-.lang-btn:hover { color: rgba(245,241,234,.72); }
+.lang-btn:hover { color: rgba(245,241,234,.88); }
 .lang-btn.active {
-  color: var(--accent-yellow);
-  background: rgba(246,196,49,.08);
-  border-color: rgba(246,196,49,.24);
+  background: var(--accent-yellow);
+  color: #1a0f00;
+  font-weight: 800;
 }
 
-.lang-sep {
-  font-family: var(--font-head);
-  font-size: 10px;
-  font-weight: 700;
-  color: rgba(245,241,234,.18);
-  user-select: none;
-  pointer-events: none;
-  padding: 0 1px;
+@media (max-width: 420px) {
+  .lang-btn { font-size: 11px; padding: 6px 10px; }
 }
 
 .nav-logo {
