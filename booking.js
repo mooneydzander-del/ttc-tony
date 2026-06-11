@@ -2,46 +2,67 @@
    TC TACOS — BOOKING CONFIG   booking.js
    ============================================================
 
-   This is a plain HTML/JS site served as a static file on Vercel.
-   Vercel environment variables cannot be injected into static HTML.
+   This is a plain HTML/CSS/JS site with no build step, served
+   as static files on Vercel. Vercel environment variables are
+   not injected into static files at runtime.
 
-   ── To enable Calendly ───────────────────────────────────────
-   1. Set CALENDLY_URL below to your Calendly event link.
-   2. Uncomment the two Calendly CDN lines in index.html <head>.
-   3. Push to GitHub — Vercel auto-deploys.
+   ── "Environment variable" equivalent for a static site ─────
+   This file IS the environment config. Each key below maps
+   1-to-1 to the Vercel env vars you'd use in a Next.js project:
 
-   ── To switch accounts (e.g. your test → Tony's) ─────────────
-   Update CALENDLY_URL below and push to deploy.
-   No other changes needed.
+     NEXT_PUBLIC_CALENDLY_URL   →  TC_BOOKING.CALENDLY_URL
+     NEXT_PUBLIC_BOOKING_PHONE  →  TC_BOOKING.PHONE
+     NEXT_PUBLIC_BOOKING_EMAIL  →  TC_BOOKING.EMAIL
+
+   To change any value: update it here and push to GitHub.
+   Vercel auto-deploys from main — no other steps needed.
+
+   ── To switch from the test Calendly account to Tony's Calendly
+      account, update NEXT_PUBLIC_CALENDLY_URL (CALENDLY_URL
+      below) in Vercel and redeploy. ─────────────────────────────
+   1. Go to Vercel → Project → Settings → Environment Variables
+      (or just update CALENDLY_URL in this file directly).
+   2. Set CALENDLY_URL to Tony's Calendly event link.
+   3. Ensure the Calendly CDN lines in index.html stay uncommented.
+   4. Push to GitHub — Vercel auto-deploys.
    ============================================================ */
 
 var TC_BOOKING = {
 
-  // ── Calendly event URL ───────────────────────────────────────
-  // Example: 'https://calendly.com/tc-tacos/catering'
-  // Leave empty ('') to scroll to the Call/Text section instead.
-  CALENDLY_URL: '',
+  // ── NEXT_PUBLIC_CALENDLY_URL ─────────────────────────────────
+  // Current: test account. Switch to Tony's URL when ready.
+  // To disable Calendly (fallback to Call/Text section): set to ''.
+  CALENDLY_URL: 'https://calendly.com/cinemlanding/reserve-tc-tacos-catering-test',
 
-  // ── Contact info ─────────────────────────────────────────────
+  // ── NEXT_PUBLIC_BOOKING_PHONE ────────────────────────────────
   PHONE:    '5097133555',
-  EMAIL:    'tctacoscatering@yahoo.com',
   TEL_HREF: 'tel:5097133555',
-  SMS_HREF: 'sms:5097133555'
+  SMS_HREF: 'sms:5097133555',
+
+  // ── NEXT_PUBLIC_BOOKING_EMAIL ────────────────────────────────
+  EMAIL: 'tctacoscatering@yahoo.com'
 
 };
 
 /**
  * openCalendlyBooking()
  *
- * Call this from any Book Now / Reserve button.
- * — If CALENDLY_URL is set: opens the Calendly popup (or new tab fallback).
- * — If CALENDLY_URL is empty: smooth-scrolls to the #book section.
+ * Called by every .booking-trigger click (Book Now, Reserve Your
+ * Date, Reserve With $200 Deposit). Never called by Call Now or
+ * Text Tony — those use plain href="tel:" / href="sms:".
+ *
+ * Behavior:
+ *   1. If CALENDLY_URL is set → try Calendly popup widget.
+ *   2. If popup widget fails (CDN not loaded, ad blocker, etc.)
+ *      → open Calendly link in a new tab as fallback.
+ *   3. If CALENDLY_URL is empty → smooth-scroll to #book
+ *      (the Call / Text Tony section).
  */
 function openCalendlyBooking() {
   var url = (TC_BOOKING.CALENDLY_URL || '').trim();
 
+  /* ── No URL: scroll to the Call / Text section ── */
   if (!url) {
-    /* No Calendly URL — scroll to the Call / Text section */
     var section = document.getElementById('book');
     if (section) {
       var navH = parseInt(
@@ -53,17 +74,24 @@ function openCalendlyBooking() {
     return;
   }
 
-  /* Try Calendly popup widget (CDN script in index.html head) */
-  if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
-    window.Calendly.initPopupWidget({ url: url });
-    return;
+  /* ── Try Calendly popup widget (loaded via CDN in index.html) ── */
+  try {
+    if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+      window.Calendly.initPopupWidget({ url: url });
+      return;
+    }
+  } catch (err) {
+    /* Popup failed — fall through to new-tab fallback */
   }
 
-  /* Fallback: open in a new tab */
+  /* ── Fallback: open Calendly in a new tab ── */
   window.open(url, '_blank', 'noopener,noreferrer');
 }
 
-/* ── Wire up all .booking-trigger elements on DOM ready ── */
+/* ── Wire up all .booking-trigger elements on DOM ready ─────────
+   Only Book Now / Reserve Your Date / Reserve With $200 Deposit
+   carry this class. Call Now and Text Tony use plain href links
+   and are intentionally excluded. ──────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.booking-trigger').forEach(function (el) {
     el.addEventListener('click', function (e) {
