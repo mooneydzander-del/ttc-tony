@@ -27,8 +27,8 @@
   --radius-sm:     4px;
   --radius-md:     8px;
   --container:     1220px;
-  --gap-section:   120px; /* desktop section padding */
-  --gap-mobile:    72px;  /* mobile section padding  */
+  --gap-section:   136px; /* desktop section padding */
+  --gap-mobile:    80px;  /* mobile section padding  */
 }
 
 html {
@@ -316,7 +316,7 @@ body { animation: page-in 0.5s ease both; }
   overflow: hidden;
   padding: var(--gap-section) 0;
   /* Sections scroll naturally — no snapping */
-  scroll-margin-top: calc(var(--nav-h) + 12px);
+  scroll-margin-top: 110px;
 }
 
 @media (max-width: 768px) {
@@ -736,7 +736,7 @@ body { animation: page-in 0.5s ease both; }
    STATS SECTION
    ============================================================ */
 
-.section-stats { padding-top: var(--gap-section); padding-bottom: calc(var(--gap-section) + 20px); }
+.section-stats { padding-top: calc(var(--gap-section) + 16px); padding-bottom: calc(var(--gap-section) + 24px); }
 
 .stats-grid {
   display: grid;
@@ -781,7 +781,7 @@ body { animation: page-in 0.5s ease both; }
 .belt-section {
   width: 100%;
   overflow: hidden;
-  padding: 8px 0 40px;
+  padding: 20px 0 52px;
   position: relative;
   cursor: grab;
 }
@@ -941,8 +941,8 @@ body { animation: page-in 0.5s ease both; }
 .packages-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin: 36px 0 18px;
+  gap: 28px;
+  margin: 44px 0 24px;
   position: relative;
   z-index: 6;
 }
@@ -1159,13 +1159,147 @@ body { animation: page-in 0.5s ease both; }
 }
 
 /* ============================================================
+   CTA BANNER — between packages and contact
+   ============================================================ */
+
+.section-cta-banner {
+  position: relative;
+  padding: 96px 0 100px;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 50%, rgba(14,8,4,.98) 0%, rgba(8,8,8,1) 70%),
+    url("data:image/svg+xml,%3Csvg%3E%3C/svg%3E");
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Subtle fire glow behind text */
+.section-cta-banner::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50%;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(217,31,31,.18) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 45% at 50% 100%, rgba(255,90,0,.22) 0%, transparent 48%);
+  pointer-events: none;
+}
+
+/* Orange top divider line */
+.section-cta-banner::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,90,0,.18) 25%, rgba(255,90,0,.28) 50%, rgba(255,90,0,.18) 75%, transparent);
+}
+
+.cta-banner-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.cta-banner-heading {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7.5vw, 96px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--fire-orange);
+  -webkit-text-stroke: 2px white;
+  paint-order: stroke fill;
+  filter: drop-shadow(0 0 28px rgba(255,90,0,.32));
+  margin-bottom: 24px;
+}
+
+.cta-banner-body {
+  font-family: var(--font-head);
+  font-size: clamp(15px, 1.5vw, 18px);
+  font-weight: 500;
+  color: rgba(245,241,234,.70);
+  line-height: 1.68;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .section-cta-banner { padding: 72px 0 80px; }
+  .cta-banner-inner { padding: 0 24px; }
+  .cta-banner-inner .btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
+   DESKTOP FLOATING RESERVE DATE BUTTON
+   ============================================================ */
+
+@keyframes float-pulse {
+  0%, 100% {
+    box-shadow:
+      0 6px 28px rgba(255,90,0,.38),
+      0 0 56px rgba(255,90,0,.14),
+      0 2px 8px rgba(0,0,0,.60);
+  }
+  50% {
+    box-shadow:
+      0 8px 36px rgba(255,90,0,.56),
+      0 0 72px rgba(255,90,0,.22),
+      0 2px 8px rgba(0,0,0,.60);
+  }
+}
+
+.float-cta {
+  /* Hidden on mobile — mobile has the sticky bar */
+  display: none;
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  z-index: 150;
+
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, var(--taco-red) 0%, var(--fire-orange) 60%, #ff7a20 100%);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50px;
+  padding: 16px 28px;
+  cursor: pointer;
+  white-space: nowrap;
+  animation: float-pulse 3.2s ease-in-out infinite;
+  transition: transform 0.22s, background 0.22s;
+}
+
+.float-cta:hover {
+  transform: translateY(-3px) scale(1.04);
+  background: linear-gradient(135deg, #f02d20 0%, var(--fire-orange) 55%, #ff8a30 100%);
+  animation: none;
+  box-shadow:
+    0 12px 40px rgba(255,90,0,.58),
+    0 0 80px rgba(255,90,0,.22);
+}
+
+@media (min-width: 769px) {
+  .float-cta { display: inline-flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-cta { animation: none; }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 
 .footer {
   border-top: 1px solid rgba(255,90,0,.10);
   background: var(--bg-2);
-  padding: 72px 52px 44px;
+  padding: 88px 52px 56px;
 }
 
 .footer-grid {
@@ -1208,7 +1342,7 @@ body { animation: page-in 0.5s ease both; }
 @media (max-width: 768px) {
   .mobile-bar {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;   /* 2 big buttons only */
     position: fixed;
     bottom: 0; left: 0; right: 0;
     z-index: 200;
@@ -1226,10 +1360,10 @@ body { animation: page-in 0.5s ease both; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  padding: 11px 8px 13px;
+  gap: 5px;
+  padding: 15px 12px 17px;
   font-family: var(--font-head);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1239,23 +1373,31 @@ body { animation: page-in 0.5s ease both; }
   cursor: pointer;
   background: none;
   border: none;
+  text-decoration: none;
 }
 .mobile-bar-item:active { color: var(--accent-yellow); }
 .mobile-bar-item svg { color: inherit; flex-shrink: 0; }
 
 .mobile-bar-book {
   background: linear-gradient(135deg, var(--taco-red) 0%, var(--fire-orange) 100%);
-  color: #fff;
+  color: #fff !important;
+  border-right: 1px solid rgba(255,255,255,.08);
   animation: fire-btn-pulse 3s ease infinite;
 }
 .mobile-bar-book:active { animation: none; }
+
+.mobile-bar-call {
+  color: var(--text-muted);
+}
+.mobile-bar-call:hover { color: var(--text); }
 
 /* ============================================================
    MOBILE RESPONSIVE
    ============================================================ */
 
 @media (max-width: 768px) {
-  body { padding-bottom: 72px; }
+  /* Extra bottom padding so mobile bar never covers content */
+  body { padding-bottom: 90px; }
 
   .hero-bg-video { opacity: 0.26; }
 
@@ -1272,7 +1414,8 @@ body { animation: page-in 0.5s ease both; }
   /* Full-width buttons */
   .hero-actions,
   .section-actions,
-  .contact-actions { flex-direction: column; }
+  .contact-actions,
+  .cta-banner-inner { flex-direction: column; }
   .hero-actions .btn,
   .section-actions .btn,
   .contact-actions .btn { width: 100%; justify-content: center; }
@@ -1294,8 +1437,8 @@ body { animation: page-in 0.5s ease both; }
   .belt-section::-webkit-scrollbar { display: none; }
   .belt-track { animation: none; }
 
-  /* Footer */
-  .footer { padding: 52px 24px 36px; }
+  /* Footer — extra bottom breathing room on mobile */
+  .footer { padding: 52px 24px 48px; }
 }
 
 @media (max-width: 480px) {
