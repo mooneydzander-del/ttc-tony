@@ -732,38 +732,6 @@ body { animation: page-in 0.5s ease both; }
   line-height: 1;
 }
 
-/* ============================================================
-   STATS SECTION
-   ============================================================ */
-
-.section-stats { padding-top: calc(var(--gap-section) + 16px); padding-bottom: calc(var(--gap-section) + 24px); }
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px 24px;
-  margin: 40px 0 48px;
-}
-
-.stat-item { display: flex; flex-direction: column; gap: 10px; }
-
-.stat-value {
-  font-family: var(--font-display);
-  font-size: clamp(44px, 5.5vw, 76px);
-  font-weight: 400;
-  line-height: 1;
-  color: var(--accent-yellow);
-  text-shadow: 0 0 20px rgba(246,196,49,.36);
-}
-
-.stat-label {
-  font-family: var(--font-head);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-  color: rgba(245,241,234,.40);
-}
 
 /* ============================================================
    MENU SECTION
@@ -1407,9 +1375,6 @@ body { animation: page-in 0.5s ease both; }
     max-width: 100%;
     padding: calc(var(--nav-h) + 40px) 24px 96px;
   }
-
-  /* Stats */
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
 
   /* Full-width buttons */
   .hero-actions,

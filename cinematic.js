@@ -186,28 +186,6 @@
     );
   });
 
-  /* ════════════════════════════════════════════════════════
-     STATS SECTION — stagger reveal
-     ════════════════════════════════════════════════════════ */
-  var statsSection = document.getElementById('about');
-  if (statsSection) {
-    gsap.utils.toArray('.stat-item').forEach(function (item, i) {
-      gsap.fromTo(item,
-        { y: 28, opacity: 0 },
-        {
-          y: 0, opacity: 1,
-          duration: 0.55,
-          delay: i * 0.08,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: statsSection,
-            start: 'top 80%',
-            once: true
-          }
-        }
-      );
-    });
-  }
 
   /* ════════════════════════════════════════════════════════
      BELT SECTION — slide in from left on scroll
