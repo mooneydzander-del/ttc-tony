@@ -22,14 +22,20 @@
       <a href="#home" class="nav-logo">
         <span class="logo-tc">TC</span><span class="logo-tacos">TACOS</span><span class="logo-catering">Catering</span>
       </a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home"     data-section="home">Home</a></li>
-        <li><a href="#menu"     data-section="menu">Menu</a></li>
-        <li><a href="#book" class="nav-cta booking-trigger" data-section="book">Book Now</a></li>
-      </ul>
+      <div class="nav-end">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" data-section="home" data-i18n="nav.home">Home</a></li>
+          <li><a href="#menu" data-section="menu" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="#book" class="nav-cta booking-trigger" data-section="book" data-i18n="nav.book">Book Now</a></li>
+        </ul>
+        <div class="lang-switch" id="langSwitch">
+          <button class="lang-btn" data-lang="en">English</button>
+          <button class="lang-btn" data-lang="es">Español</button>
+        </div>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -71,22 +77,22 @@
 
     <!-- L6: Content — left-aligned -->
     <div class="hero-content" id="heroContent">
-      <p class="hero-eyebrow">Live Taco Catering &nbsp;·&nbsp; Tri-Cities, WA</p>
-      <p class="hero-tagline">Best Service In Town</p>
+      <p class="hero-eyebrow" data-i18n="hero.eyebrow">Live Taco Catering &nbsp;·&nbsp; Tri-Cities, WA</p>
+      <p class="hero-tagline" data-i18n="hero.tagline">Best Service In Town</p>
       <h1 class="hero-headline">TC Tacos<br>Catering</h1>
-      <p class="hero-subheadline">Fresh taco catering for backyard parties, weddings, work events, and celebrations across the Tri-Cities.</p>
+      <p class="hero-subheadline" data-i18n="hero.subheadline">Fresh taco catering for backyard parties, weddings, work events, and celebrations across the Tri-Cities.</p>
 
       <div class="hero-badges">
-        <span>3 Food Trucks</span>
+        <span data-i18n="hero.badge1">3 Food Trucks</span>
         <span class="hero-badge-dot">·</span>
-        <span>Made Fresh On-Site</span>
+        <span data-i18n="hero.badge2">Made Fresh On-Site</span>
         <span class="hero-badge-dot">·</span>
-        <span>$200 Holds Your Date</span>
+        <span data-i18n="hero.badge3">$200 Holds Your Date</span>
       </div>
 
       <div class="hero-actions">
-        <button class="btn btn-primary btn-lg booking-trigger">Book Now</button>
-        <a href="#menu" class="btn btn-outline btn-lg">View Menu</a>
+        <button class="btn btn-primary btn-lg booking-trigger" data-i18n="nav.book">Book Now</button>
+        <a href="#menu" class="btn btn-outline btn-lg" data-i18n="hero.viewMenu">View Menu</a>
       </div>
 
       <a href="tel:5097133555" class="hero-phone-cta">
@@ -118,9 +124,9 @@
     <!-- Header inside container -->
     <div class="container">
       <div class="menu-header" data-reveal>
-        <p class="section-eyebrow">What We Serve</p>
-        <h2 class="section-headline section-headline-sm">Menu</h2>
-        <p class="section-subhead">Made fresh on-site for backyard parties, weddings, work events, and full-service celebrations.</p>
+        <p class="section-eyebrow" data-i18n="menu.eyebrow">What We Serve</p>
+        <h2 class="section-headline section-headline-sm" data-i18n="menu.headline">Menu</h2>
+        <p class="section-subhead" data-i18n="menu.subhead">Made fresh on-site for backyard parties, weddings, work events, and full-service celebrations.</p>
       </div>
     </div>
 
@@ -151,28 +157,28 @@
 
     <!-- Menu grid inside container -->
     <div class="container">
-      <p class="menu-cat-label" data-reveal>What's On The Truck</p>
+      <p class="menu-cat-label" data-reveal data-i18n="menu.onTruck">What's On The Truck</p>
       <div class="menu-grid" data-reveal>
         <div class="menu-cat">
-          <p class="menu-cat-name">Tacos</p>
+          <p class="menu-cat-name" data-i18n="menu.cat.tacos">Tacos</p>
           <ul><li>Asada Tacos</li><li>Al Pastor Tacos</li><li>Pollo Tacos</li></ul>
         </div>
         <div class="menu-cat">
-          <p class="menu-cat-name">Quesadillas</p>
+          <p class="menu-cat-name" data-i18n="menu.cat.quesadillas">Quesadillas</p>
           <ul><li>Asada Quesadilla</li><li>Al Pastor Quesadilla</li><li>Pollo Quesadilla</li></ul>
         </div>
         <div class="menu-cat">
-          <p class="menu-cat-name">Specialties</p>
+          <p class="menu-cat-name" data-i18n="menu.cat.specialties">Specialties</p>
           <ul><li>Quesabirria</li><li>Taco Boxes</li></ul>
         </div>
         <div class="menu-cat">
-          <p class="menu-cat-name">Drinks</p>
+          <p class="menu-cat-name" data-i18n="menu.cat.drinks">Drinks</p>
           <ul><li>Sodas</li></ul>
         </div>
       </div>
-      <p class="menu-note">Menu options may vary by event.</p>
+      <p class="menu-note" data-i18n="menu.note">Menu options may vary by event.</p>
       <div class="section-actions" data-reveal>
-        <button class="btn btn-primary btn-lg booking-trigger">Reserve Your Date</button>
+        <button class="btn btn-primary btn-lg booking-trigger" data-i18n="shared.bookDate">Book Date</button>
       </div>
     </div>
 
@@ -198,38 +204,38 @@
 
     <div class="container">
       <div class="section-header" data-reveal>
-        <p class="section-eyebrow">Reserve Your Date</p>
-        <h2 class="section-headline section-headline-sm">Choose Your Package</h2>
-        <p class="section-subhead">Lock in your date with a $200 deposit. Tony will follow up to confirm your menu, headcount, and final price.</p>
+        <p class="section-eyebrow" data-i18n="pkg.eyebrow">Book Your Date</p>
+        <h2 class="section-headline section-headline-sm" data-i18n="pkg.headline">Choose Your Package</h2>
+        <p class="section-subhead" data-i18n="pkg.subhead">Lock in your date with a $200 deposit. Tony will follow up to confirm your menu, headcount, and final price.</p>
       </div>
 
       <div class="packages-grid" data-reveal>
         <div class="package-card">
-          <p class="package-name">Small Event</p>
+          <p class="package-name" data-i18n="pkg.small">Small Event</p>
           <div class="package-price">$1,000</div>
-          <p class="package-price-sub">Starting at</p>
-          <p class="package-desc">Perfect for backyard parties, family dinners, and casual get-togethers.</p>
-          <p class="package-deposit-note">$200 deposit to reserve</p>
-          <button class="btn btn-outline booking-trigger">Reserve With $200 Deposit</button>
+          <p class="package-price-sub" data-i18n="pkg.startingAt">Starting at</p>
+          <p class="package-desc" data-i18n="pkg.smallDesc">Perfect for backyard parties, family dinners, and casual get-togethers.</p>
+          <p class="package-deposit-note" data-i18n="pkg.depositNote">$200 deposit to reserve</p>
+          <button class="btn btn-outline booking-trigger" data-i18n="pkg.reserveBtn">Reserve With $200 Deposit</button>
         </div>
         <div class="package-card featured">
-          <p class="package-name">Standard Event</p>
+          <p class="package-name" data-i18n="pkg.standard">Standard Event</p>
           <div class="package-price">$2,000</div>
-          <p class="package-price-sub">Starting at</p>
-          <p class="package-desc">Great for birthdays, company events, graduation parties, and weekend celebrations.</p>
-          <p class="package-deposit-note">$200 deposit to reserve</p>
-          <button class="btn btn-primary booking-trigger">Reserve With $200 Deposit</button>
+          <p class="package-price-sub" data-i18n="pkg.startingAt">Starting at</p>
+          <p class="package-desc" data-i18n="pkg.standardDesc">Great for birthdays, company events, graduation parties, and weekend celebrations.</p>
+          <p class="package-deposit-note" data-i18n="pkg.depositNote">$200 deposit to reserve</p>
+          <button class="btn btn-primary booking-trigger" data-i18n="pkg.reserveBtn">Reserve With $200 Deposit</button>
         </div>
         <div class="package-card">
-          <p class="package-name">Large Event</p>
+          <p class="package-name" data-i18n="pkg.large">Large Event</p>
           <div class="package-price">$3,000</div>
-          <p class="package-price-sub">Starting at</p>
-          <p class="package-desc">Built for weddings, receptions, large block parties, and community events.</p>
-          <p class="package-deposit-note">$200 deposit to reserve</p>
-          <button class="btn btn-outline booking-trigger">Reserve With $200 Deposit</button>
+          <p class="package-price-sub" data-i18n="pkg.startingAt">Starting at</p>
+          <p class="package-desc" data-i18n="pkg.largeDesc">Built for weddings, receptions, large block parties, and community events.</p>
+          <p class="package-deposit-note" data-i18n="pkg.depositNote">$200 deposit to reserve</p>
+          <button class="btn btn-outline booking-trigger" data-i18n="pkg.reserveBtn">Reserve With $200 Deposit</button>
         </div>
       </div>
-      <p class="packages-note">Final price depends on guest count, menu choices, location, and event details.</p>
+      <p class="packages-note" data-i18n="pkg.note">Final price depends on guest count, menu choices, location, and event details.</p>
     </div>
 
     <div class="section-flame-strip" aria-hidden="true"></div>
@@ -241,16 +247,16 @@
        ═══════════════════════════════════════════════════ -->
   <section class="section-cta-banner">
     <div class="cta-banner-inner" data-reveal>
-      <p class="section-eyebrow">Ready To Reserve</p>
-      <h2 class="cta-banner-heading">Reserve Your Date</h2>
-      <p class="cta-banner-body">Pick your package and lock in your date. Tony will follow up to confirm your menu, guest count, location, and final price.</p>
-      <button class="btn btn-primary btn-lg booking-trigger">Book Now</button>
+      <p class="section-eyebrow" data-i18n="cta.eyebrow">Ready To Book</p>
+      <h2 class="cta-banner-heading" data-i18n="cta.heading">Book Your Date</h2>
+      <p class="cta-banner-body" data-i18n="cta.body">Choose a time through Calendly so Tony can confirm your event details, menu, guest count, location, and final price.</p>
+      <button class="btn btn-primary btn-lg booking-trigger" data-i18n="shared.bookDate">Book Date</button>
     </div>
   </section>
 
 
   <!-- ═══════════════════════════════════════════════════
-       CONTACT / RESERVE
+       BOOK — Calendly booking card
        ═══════════════════════════════════════════════════ -->
   <section class="section section-contact" id="book">
     <div class="section-bg" aria-hidden="true">
@@ -269,19 +275,12 @@
     <div class="container">
       <div class="contact-card" data-reveal>
 
-        <p class="section-eyebrow">Ready To Reserve</p>
-        <h2 class="contact-heading">Call or Text<br>Tony To Reserve</h2>
-        <p class="contact-body">Call or text Tony to check availability, confirm event details, and lock in your catering date.</p>
+        <p class="section-eyebrow" data-i18n="book.eyebrow">Ready To Book</p>
+        <h2 class="contact-heading" data-i18n="book.heading">Book Your Date</h2>
+        <p class="contact-body" data-i18n="book.body">Choose a time through Calendly so Tony can confirm your event details, menu, guest count, location, and final price.</p>
 
         <div class="contact-actions">
-          <a href="tel:5097133555" class="btn btn-primary btn-lg">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
-            Call Now
-          </a>
-          <a href="sms:5097133555" class="btn btn-outline btn-lg">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            Text Tony
-          </a>
+          <button class="btn btn-primary btn-lg booking-trigger" data-i18n="shared.bookDate">Book Date</button>
         </div>
 
         <div class="contact-divider" aria-hidden="true"></div>
@@ -305,7 +304,7 @@
           </li>
         </ul>
 
-        <p class="tc-note">TC Tacos runs 3 food trucks and can serve up to 3 events per day. Your $200 deposit reserves the date. The remaining balance is confirmed after Tony reviews your event details.</p>
+        <p class="tc-note" data-i18n="book.tcNote">TC Tacos runs 3 food trucks and can serve up to 3 events per day. Your $200 deposit reserves the date. The remaining balance is confirmed after Tony reviews your event details.</p>
 
       </div>
     </div>
@@ -319,19 +318,19 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo">TC <span>TACOS</span> Catering</div>
-        <p class="footer-tagline">Fresh taco catering for backyard parties, weddings, and events across the Tri-Cities. Reserve with a $200 deposit.</p>
+        <p class="footer-tagline" data-i18n="footer.tagline">Fresh taco catering for backyard parties, weddings, and events across the Tri-Cities. Reserve with a $200 deposit.</p>
       </div>
       <div class="footer-col">
-        <h4>Sections</h4>
+        <h4 data-i18n="footer.navLabel">Sections</h4>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#packages">Packages</a></li>
-          <li><a href="#book">Contact</a></li>
+          <li><a href="#home" data-i18n="nav.home">Home</a></li>
+          <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="#packages" data-i18n="footer.packages">Packages</a></li>
+          <li><a href="#book" data-i18n="footer.contactLabel">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4 data-i18n="footer.contactLabel">Contact</h4>
         <ul>
           <li><a href="tel:5097133555">(509) 713-3555</a></li>
           <li><a href="mailto:tctacoscatering@yahoo.com">tctacoscatering@yahoo.com</a></li>
@@ -341,33 +340,28 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 TC Tacos Catering. All rights reserved.</p>
+      <p data-i18n="footer.copy">&copy; 2025 TC Tacos Catering. All rights reserved.</p>
       <p>Tri-Cities, WA</p>
     </div>
   </footer>
 
 
   <!-- ═══════════════════════════════════════════════════
-       MOBILE STICKY BAR — 2 buttons: Book Now + Call
+       MOBILE STICKY BAR — single Book Now button
        ═══════════════════════════════════════════════════ -->
   <div class="mobile-bar" id="mobileBar">
     <button class="mobile-bar-item mobile-bar-book booking-trigger">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      Book Now
+      <span data-i18n="nav.book">Book Now</span>
     </button>
-    <a href="tel:5097133555" class="mobile-bar-item mobile-bar-call">
-      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
-      Call
-    </a>
   </div>
 
   <!-- ═══════════════════════════════════════════════════
-       DESKTOP FLOATING RESERVE BUTTON
-       Visible on desktop only (hidden on mobile via CSS)
+       DESKTOP FLOATING BUTTON
        ═══════════════════════════════════════════════════ -->
-  <button class="float-cta booking-trigger" id="floatCta" aria-label="Reserve your date">
+  <button class="float-cta booking-trigger" id="floatCta" aria-label="Book your date">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-    Reserve Date
+    <span data-i18n="shared.bookDate">Book Date</span>
   </button>
 
 
@@ -379,6 +373,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="app.js"></script>
   <script src="cinematic.js"></script>
+  <script src="lang.js"></script>
 
 </body>
 </html>
